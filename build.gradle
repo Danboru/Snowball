@@ -2,25 +2,41 @@
 apply from: 'code_quality_tools/jacoco.gradle'
 
 buildscript {
+  // Gradle will not find vars defined in an external file when referring to them
+  // in the buildscript block, unless you link it from the buildscript block, too.
+  apply from: 'build_system/dependencies.gradle'
+
   repositories {
     jcenter()
   }
   dependencies {
     classpath 'com.android.tools.build:gradle:1.5.0'
+
+    // APT compile-time annotation processing
     classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+
+    // Backport of some Java 8 language features such as Lambdas and method references.
     classpath 'me.tatarka:gradle-retrolambda:3.2.5'
-    classpath 'hu.supercluster:paperwork-plugin:1.2.4'
-    classpath 'com.jakewharton.hugo:hugo-plugin:1.2.1'
+
     // Workaround for Lint + Retrolambda.
     classpath 'me.tatarka.retrolambda.projectlombok:lombok.ast:0.2.3.a2'
+
+    // Generates build info without breaking incremental builds
+    classpath libraries.paperworkPlugin
+
+    // NOTE: Do not place your application dependencies here; they belong
+    // in the individual module build.gradle files
   }
+
   // Part of workaround for Lint + Retrolambda.
   configurations.classpath.exclude group: 'com.android.tools.external.lombok'
 }
 
+
 allprojects {
   repositories {
     jcenter()
+    maven {url "https://clojars.org/repo/"}
   }
 }
 
@@ -31,7 +47,8 @@ task clean(type: Delete) {
 ext.preDexLibs = !project.hasProperty('disablePreDex')
 subprojects {
   project.plugins.whenPluginAdded { plugin ->
-    if ('com.android.build.gradle.AppPlugin'.equals(plugin.class.name) || 'com.android.build.gradle.LibraryPlugin'.equals(plugin.class.name)) {
+    if ('com.android.build.gradle.AppPlugin'.equals(plugin.class.name) ||
+        'com.android.build.gradle.LibraryPlugin'.equals(plugin.class.name)) {
       // enable or disable pre-dexing
       project.android.dexOptions.preDexLibraries = rootProject.ext.preDexLibs
     }
