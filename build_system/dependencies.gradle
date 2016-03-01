@@ -1,3 +1,16 @@
+ext.app =  [
+  androidBuildToolsVersion : "23.0.2",
+  androidMinSdkVersion : 15,
+  androidTargetSdkVersion : 23,
+  androidCompileSdkVersion : 23,
+
+  androidApplicationId : "com.lenguyenthanh.snowball",
+  androidVersionCode : 1,
+  androidVersionName : "1.0",
+  testInstrumentationRunner : "android.support.test.runner.AndroidJUnitRunner",
+  testApplicationId : 'com.lenguyenthanh.snowball.test',
+]
+
 ext.versions = [
         code                   : 1,
         name                   : '1.0',
@@ -18,8 +31,6 @@ ext.versions = [
         jackson                : '2.6.3',
         autoValue              : '1.1',
         butterKnife            : '7.0.1',
-        picasso                : '2.5.2',
-        picassoOkHttpDownloader: '1.0.2',
         timber                 : '4.1.1',
         espresso               : '2.2.1',
         stetho                 : '1.3.0',
@@ -61,8 +72,6 @@ ext.libraries = [
         supportCardView         : "com.android.support:cardview-v7:$versions.supportLibs",
 
         butterKnife             : "com.jakewharton:butterknife:$versions.butterKnife",
-        picasso                 : "com.squareup.picasso:picasso:$versions.picasso",
-        picassoOkHttpDownloader : "com.jakewharton.picasso:picasso2-okhttp3-downloader:$versions.picassoOkHttpDownloader",
         timber                  : "com.jakewharton.timber:timber:$versions.timber",
 
         icepick                 : "frankiesardo:icepick:$versions.icepick",

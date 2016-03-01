@@ -14,16 +14,15 @@ paperwork {
 }
 
 android {
-  compileSdkVersion 23
-  buildToolsVersion "23.0.2"
+  compileSdkVersion app.androidCompileSdkVersion
+  buildToolsVersion app.androidBuildToolsVersion
 
   defaultConfig {
-    applicationId "com.lenguyenthanh.snowball"
-    minSdkVersion 15
-    targetSdkVersion 23
-    versionCode 1
-    versionName "1.0"
-    testInstrumentationRunner 'com.lenguyenthanh.daggerspike.util.AndroidJacocoTestRunner'
+    applicationId app.applicationId
+    minSdkVersion app.androidMinSdkVersion
+    targetSdkVersion app.androidTargetSdkVersion
+    versionCode app.androidVersionCode
+    versionName app.androidVersionName
   }
 
   buildTypes {
@@ -89,11 +88,6 @@ android {
     sourceCompatibility JavaVersion.VERSION_1_8
     targetCompatibility JavaVersion.VERSION_1_8
   }
-
-}
-
-repositories {
-  maven {url "https://clojars.org/repo/"}
 }
 
 dependencies {
@@ -110,24 +104,15 @@ dependencies {
   compile libraries.javaxInject
   compile libraries.javaxAnnotationApi
 
-  // Retrofit
-  compile libraries.okHttp
-  compile libraries.retrofit
-  compile libraries.retrofitJacksonConverter
-  compile libraries.retrofitRxJavaAdapter
-  compile libraries.jacksonDataBind
-
   compile libraries.autoValue
 
   compile libraries.supportAnnotations
   compile libraries.supportAppCompat
-  compile libraries.supportDesign
+  compile (libraries.supportDesign)
   compile libraries.supportRecyclerView
   compile libraries.supportCardView
 
   compile libraries.butterKnife
-  compile libraries.picasso
-  compile libraries.picassoOkHttpDownloader
   compile libraries.timber
 
 

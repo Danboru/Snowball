@@ -1,5 +1,32 @@
 apply plugin: 'java'
+apply from: '../code_quality_tools/jacoco.gradle'
+apply from: '../build_system/dependencies.gradle'
+
+//noinspection GroovyUnusedAssignment
+sourceCompatibility = 1.8
+//noinspection GroovyUnusedAssignment
+targetCompatibility = 1.8
+
+configurations {
+  provided
+}
+
+sourceSets {
+  main {
+    compileClasspath += configurations.provided
+  }
+}
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+  // Reactive
+  compile libraries.rxJava
+
+  // Dagger 2
+  compile libraries.dagger
+  provided libraries.daggerCompiler
+  provided libraries.javaxInject
+  provided libraries.javaxAnnotationApi
+
+  testCompile libraries.junit
+  testCompile libraries.mockitoCore
 }
