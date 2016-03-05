@@ -25,7 +25,6 @@ dependencies {
   compile libraries.dagger
   provided libraries.daggerCompiler
   provided libraries.javaxInject
-  provided libraries.javaxAnnotationApi
   compile libraries.autoValue
 
   testCompile libraries.junit

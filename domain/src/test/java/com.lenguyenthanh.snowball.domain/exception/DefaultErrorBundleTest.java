@@ -15,12 +15,14 @@
  */
 package com.lenguyenthanh.snowball.domain.exception;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 public class DefaultErrorBundleTest {
   private DefaultErrorBundle defaultErrorBundle;
@@ -36,8 +38,10 @@ public class DefaultErrorBundleTest {
 
   @Test
   public void testGetErrorMessageInteraction() {
-    defaultErrorBundle.getErrorMessage();
-
+    String message = "a message";
+    when(mockException.getMessage()).thenReturn(message);
+    String result = defaultErrorBundle.getErrorMessage();
+    Assert.assertEquals(message, result);
     verify(mockException).getMessage();
   }
 }

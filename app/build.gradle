@@ -35,10 +35,14 @@ android {
       signingConfig signingConfigs.debug
       applicationIdSuffix '.debug'
     }
+  }
 
+  productFlavors {
     internal {
-      signingConfig signingConfigs.debug
-      applicationIdSuffix '.internal'
+      applicationId 'com.lenguyenthanh.snowball.internal'
+    }
+    production {
+      applicationId 'com.lenguyenthanh.snowball'
     }
   }
 
@@ -91,6 +95,8 @@ android {
 }
 
 dependencies {
+  compile project(':domain')
+  compile project(':data')
   // Mvp
   compile libraries.nimble
 
