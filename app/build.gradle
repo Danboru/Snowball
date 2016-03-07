@@ -37,15 +37,6 @@ android {
     }
   }
 
-  productFlavors {
-    internal {
-      applicationId 'com.lenguyenthanh.snowball.internal'
-    }
-    production {
-      applicationId 'com.lenguyenthanh.snowball'
-    }
-  }
-
   signingConfigs {
     debug {
       storeFile rootProject.file('build_system/debug.keystore')
