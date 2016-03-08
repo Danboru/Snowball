@@ -18,7 +18,7 @@ package com.lenguyenthanh.snowball.ui.base;
 import butterknife.ButterKnife;
 import com.lenguyenthanh.nimble.NimbleView;
 import com.lenguyenthanh.nimble.view.NimbleActivity;
-import com.lenguyenthanh.nimbledagger2.DaggerApplication;
+import com.lenguyenthanh.snowball.app.SnowBallApplication;
 
 public abstract class BaseActivity<V extends NimbleView> extends NimbleActivity<V>
     implements NimbleView {
@@ -42,8 +42,8 @@ public abstract class BaseActivity<V extends NimbleView> extends NimbleActivity<
   }
 
   protected void setupActivityComponent() {
-    buildComponent(DaggerApplication.get(this).getAppComponent());
+    buildComponent(SnowBallApplication.get(this).getAppComponent());
   }
 
-  abstract protected void buildComponent(DaggerApplication.AppComponent appComponent);
+  abstract protected void buildComponent(SnowBallApplication.AppComponent appComponent);
 }
