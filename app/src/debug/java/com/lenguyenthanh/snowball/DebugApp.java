@@ -4,7 +4,6 @@ import com.lenguyenthanh.snowball.app.AppModule;
 import com.lenguyenthanh.snowball.app.SnowBallApplication;
 import com.lenguyenthanh.snowball.data.network.NetworkModule;
 import com.lenguyenthanh.snowball.data.network.api.ApiModule;
-import com.lenguyenthanh.snowball.models.MemoryLeakProxy;
 import dagger.Component;
 import javax.inject.Singleton;
 
@@ -14,8 +13,6 @@ public class DebugApp extends SnowBallApplication {
       AppModule.class, DebugModule.class, NetworkModule.class, ApiModule.class
   })
   public interface AppComponent extends SnowBallApplication.AppComponent {
-    MemoryLeakProxy memoryLeakProxy();
-
     void inject(DebugActivityHierarchyServer debugActivityHierarchyServer);
 
     void inject(DebugInitializer initializer);

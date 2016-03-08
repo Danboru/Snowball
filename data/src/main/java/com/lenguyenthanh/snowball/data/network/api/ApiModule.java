@@ -24,25 +24,29 @@ public final class ApiModule {
   }
 
   @Provides
-  @NonNull
   @Singleton
+  @NonNull
   public ChangeableBaseUrl provideChangeableBaseUrl() {
     return changeableBaseUrl;
   }
 
   @Provides
-  @NonNull
   @Singleton
-  public Retrofit provideRetrofit(@NonNull OkHttpClient okHttpClient, @NonNull ChangeableBaseUrl changeableBaseUrl, Converter.Factory factory) {
-    return new Retrofit.Builder().baseUrl(changeableBaseUrl)
+  @NonNull
+  public Retrofit provideRetrofit(@NonNull OkHttpClient okHttpClient,
+      @NonNull ChangeableBaseUrl changeableBaseUrl, @NonNull Converter.Factory factory) {
+    return new Retrofit.Builder()
+        .baseUrl(changeableBaseUrl)
         .client(okHttpClient)
         .addConverterFactory(factory)
-        .addCallAdapterFactory(RxJavaCallAdapterFactory.create()).validateEagerly(BuildConfig.DEBUG)  // Fail early: check Retrofit configuration at creation time in Debug build.
+        .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+        .validateEagerly(BuildConfig.DEBUG)
         .build();
   }
 
   @Provides
   @Singleton
+  @NonNull
   Converter.Factory provideConverter(@NonNull ObjectMapper objectMapper) {
     return JacksonConverterFactory.create(objectMapper);
   }

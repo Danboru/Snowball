@@ -3,6 +3,7 @@ package com.lenguyenthanh.snowball;
 import com.lenguyenthanh.snowball.app.AppModule;
 import com.lenguyenthanh.snowball.app.ReleaseInitializer;
 import com.lenguyenthanh.snowball.app.SnowBallApplication;
+import com.lenguyenthanh.snowball.app.support.SupportModule;
 import com.lenguyenthanh.snowball.data.network.NetworkModule;
 import com.lenguyenthanh.snowball.data.network.api.ApiModule;
 import dagger.Component;

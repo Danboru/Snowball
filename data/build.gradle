@@ -64,6 +64,7 @@ dependencies {
   compile libraries.javaxAnnotationApi
 
   compile libraries.okHttp
+  compile libraries.okHttpLoggingInterceptor
   compile libraries.retrofit
   compile libraries.retrofitJacksonConverter
   compile libraries.retrofitRxJavaAdapter

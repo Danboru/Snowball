@@ -5,14 +5,20 @@ import android.support.annotation.NonNull;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.lenguyenthanh.snowball.app.Initializer;
 import com.lenguyenthanh.snowball.app.support.ActivityHierarchyServer;
+import com.lenguyenthanh.snowball.data.network.OkHttpInterceptors;
+import com.lenguyenthanh.snowball.data.network.OkHttpNetworkInterceptors;
 import com.lenguyenthanh.snowball.models.MemoryLeakProxy;
 import com.lenguyenthanh.snowball.models.MemoryLeakProxyImp;
 import dagger.Module;
 import dagger.Provides;
 import hu.supercluster.paperwork.Paperwork;
+import java.util.List;
 import javax.inject.Singleton;
 import okhttp3.Interceptor;
+import okhttp3.logging.HttpLoggingInterceptor;
 import timber.log.Timber;
+
+import static java.util.Collections.singletonList;
 
 @Module
 @Singleton
@@ -52,5 +58,22 @@ public class DebugModule {
     @Singleton
     public Paperwork providePaperwork(@NonNull Application application) {
         return new Paperwork(application);
+    }
+
+    @Provides @Singleton @NonNull
+    public HttpLoggingInterceptor provideHttpLoggingInterceptor() {
+        return new HttpLoggingInterceptor(message -> Timber.d(message));
+    }
+
+    @Provides @OkHttpInterceptors
+    @Singleton @NonNull
+    public List<Interceptor> provideOkHttpInterceptors(@NonNull HttpLoggingInterceptor httpLoggingInterceptor) {
+        return singletonList(httpLoggingInterceptor);
+    }
+
+    @Provides @OkHttpNetworkInterceptors
+    @Singleton @NonNull
+    public List<Interceptor> provideOkHttpNetworkInterceptors() {
+        return singletonList(new StethoInterceptor());
     }
 }
