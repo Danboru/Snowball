@@ -1,4 +1,4 @@
-package com.lenguyenthanh.snowball.common;
+package com.lenguyenthanh.snowball.domain.common;
 
 import java.util.List;
 

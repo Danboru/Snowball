@@ -14,8 +14,8 @@ public class MemoryLeakProxyImp implements MemoryLeakProxy {
     @Nullable
     private RefWatcher refWatcher;
 
-    public MemoryLeakProxyImp(@NonNull Application qualityMattersApp) {
-        this.application = qualityMattersApp;
+    public MemoryLeakProxyImp(@NonNull Application application) {
+        this.application = application;
     }
 
     @Override
@@ -25,7 +25,7 @@ public class MemoryLeakProxyImp implements MemoryLeakProxy {
 
     @Override
     public void watch(@NonNull Object object) {
-        if (refWatcher != null && object != null) {
+        if (refWatcher != null) {
             refWatcher.watch(object);
         }
     }

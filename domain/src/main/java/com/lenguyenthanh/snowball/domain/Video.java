@@ -18,15 +18,15 @@ public abstract class Video {
   }
 
   @AutoValue.Builder
-  abstract static class Builder {
-    abstract Builder id(int id);
+  public abstract static class Builder{
+    public abstract Builder id(int id);
 
-    abstract Builder name(String name);
+    public abstract Builder name(String name);
 
-    abstract Builder url(String url);
+    public abstract Builder url(String url);
 
-    abstract Builder thumbnail(String thumbnail);
+    public abstract Builder thumbnail(String thumbnail);
 
-    abstract Video build();
+    public abstract Video build();
   }
 }

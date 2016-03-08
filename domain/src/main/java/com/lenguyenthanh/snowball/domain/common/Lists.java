@@ -1,8 +1,7 @@
-package com.lenguyenthanh.snowball.common;
+package com.lenguyenthanh.snowball.domain.common;
 
-import android.util.SparseArray;
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Collection;
 import java.util.List;
 import rx.functions.Func1;
 import rx.functions.Func2;
@@ -31,7 +30,7 @@ public final class Lists {
     return true;
   }
 
-  public static <T> boolean isEmptyOrNull(List<T> list) {
+  public static <T> boolean isEmptyOrNull(Collection<T> list) {
     return list == null || list.isEmpty();
   }
 
@@ -42,14 +41,5 @@ public final class Lists {
     }
 
     return mappedList;
-  }
-
-  public static <T> List<T> asList(SparseArray<T> sparseArray) {
-    if (sparseArray == null || sparseArray.size() == 0) return Collections.emptyList();
-    int size = sparseArray.size();
-    List<T> arrayList = new ArrayList<>(size);
-    for (int i = 0; i < size; i++)
-      arrayList.add(sparseArray.valueAt(i));
-    return arrayList;
   }
 }

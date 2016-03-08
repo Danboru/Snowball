@@ -3,13 +3,13 @@ package com.lenguyenthanh.snowball.models;
 import android.content.Context;
 import android.os.Build;
 import android.util.DisplayMetrics;
-import com.lenguyenthanh.snowball.common.Strings;
+import com.lenguyenthanh.snowball.domain.common.Strings;
 
-public class DeviceInfoImp implements DeviceInfo {
+public class DeviceInfoImpl implements DeviceInfo {
 
   private Context context;
 
-  public DeviceInfoImp(Context context) {
+  public DeviceInfoImpl(Context context) {
     this.context = context;
   }
 
