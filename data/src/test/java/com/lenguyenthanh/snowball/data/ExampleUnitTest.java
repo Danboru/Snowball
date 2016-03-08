@@ -1,4 +1,4 @@
-package com.lenguyenthanh.data;
+package com.lenguyenthanh.snowball.data;
 
 import org.junit.Test;
 

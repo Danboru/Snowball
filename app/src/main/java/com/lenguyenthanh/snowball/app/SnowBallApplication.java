@@ -2,6 +2,8 @@ package com.lenguyenthanh.snowball.app;
 
 import android.app.Application;
 import android.content.Context;
+import com.lenguyenthanh.snowball.data.network.NetworkModule;
+import com.lenguyenthanh.snowball.data.network.api.ApiModule;
 import com.lenguyenthanh.snowball.app.support.SupportModule;
 import dagger.Component;
 import javax.inject.Inject;
@@ -36,7 +38,7 @@ public class SnowBallApplication extends Application {
 
   @Singleton
   @Component(modules = {
-      AppModule.class, SupportModule.class
+      AppModule.class, SupportModule.class, NetworkModule.class, ApiModule.class
   })
   public interface AppComponent extends AppDependencies {
 

@@ -1,4 +1,4 @@
-package com.lenguyenthanh.data;
+package com.lenguyenthanh.snowball.data;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

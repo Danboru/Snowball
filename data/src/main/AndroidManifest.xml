@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.lenguyenthanh.data"
+  package="com.lenguyenthanh.snowball.data"
   >
 
   <application

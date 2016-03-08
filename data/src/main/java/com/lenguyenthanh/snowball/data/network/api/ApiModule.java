@@ -1,0 +1,49 @@
+package com.lenguyenthanh.snowball.data.network.api;
+
+import android.support.annotation.NonNull;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.lenguyenthanh.snowball.data.BuildConfig;
+import dagger.Module;
+import dagger.Provides;
+import javax.inject.Singleton;
+import okhttp3.OkHttpClient;
+import retrofit2.Converter;
+import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.converter.jackson.JacksonConverterFactory;
+
+@Module
+@Singleton
+public final class ApiModule {
+
+  @NonNull
+  private final ChangeableBaseUrl changeableBaseUrl;
+
+  public ApiModule(@NonNull String baseUrl) {
+    changeableBaseUrl = new ChangeableBaseUrl(baseUrl);
+  }
+
+  @Provides
+  @NonNull
+  @Singleton
+  public ChangeableBaseUrl provideChangeableBaseUrl() {
+    return changeableBaseUrl;
+  }
+
+  @Provides
+  @NonNull
+  @Singleton
+  public Retrofit provideRetrofit(@NonNull OkHttpClient okHttpClient, @NonNull ChangeableBaseUrl changeableBaseUrl, Converter.Factory factory) {
+    return new Retrofit.Builder().baseUrl(changeableBaseUrl)
+        .client(okHttpClient)
+        .addConverterFactory(factory)
+        .addCallAdapterFactory(RxJavaCallAdapterFactory.create()).validateEagerly(BuildConfig.DEBUG)  // Fail early: check Retrofit configuration at creation time in Debug build.
+        .build();
+  }
+
+  @Provides
+  @Singleton
+  Converter.Factory provideConverter(@NonNull ObjectMapper objectMapper) {
+    return JacksonConverterFactory.create(objectMapper);
+  }
+}

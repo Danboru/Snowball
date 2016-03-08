@@ -28,7 +28,7 @@ ext.versions = [
         supportLibs            : '23.2.0',
         okHttp                 : '3.2.0',
         retrofit               : '2.0.0-beta4',
-        jackson                : '2.6.3',
+        jackson                : '2.6.2',
         autoValue              : '1.1',
         butterKnife            : '7.0.1',
         timber                 : '4.1.1',

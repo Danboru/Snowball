@@ -49,6 +49,10 @@ android {
 dependencies {
 
   compile project(':domain')
+
+  // Support annotation
+  compile libraries.supportAnnotations
+
   // Reactive
   compile libraries.rxJava
   compile libraries.rxAndroid
