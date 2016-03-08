@@ -1,9 +1,10 @@
 package com.lenguyenthanh.snowball;
 
 import com.lenguyenthanh.snowball.app.AppModule;
+import com.lenguyenthanh.snowball.app.Config;
 import com.lenguyenthanh.snowball.app.SnowBallApplication;
 import com.lenguyenthanh.snowball.data.network.NetworkModule;
-import com.lenguyenthanh.snowball.data.network.api.ApiModule;
+import com.lenguyenthanh.snowball.data.network.ApiModule;
 import dagger.Component;
 import javax.inject.Singleton;
 
@@ -22,7 +23,7 @@ public class DebugApp extends SnowBallApplication {
   protected void initializeDaggerComponent() {
     appComponent = DaggerDebugApp_AppComponent.builder()
         .appModule(new AppModule(this))
-        .apiModule(new ApiModule("https://api"))
+        .apiModule(new ApiModule(Config.BASE_URL))
         .build();
     appComponent.inject(this);
   }

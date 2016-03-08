@@ -1,8 +1,6 @@
 package com.lenguyenthanh.snowball.app.support;
 
 import android.support.annotation.NonNull;
-import com.lenguyenthanh.snowball.app.Initializer;
-import com.lenguyenthanh.snowball.app.MainInitializer;
 import com.lenguyenthanh.snowball.data.network.OkHttpInterceptors;
 import com.lenguyenthanh.snowball.data.network.OkHttpNetworkInterceptors;
 import dagger.Module;

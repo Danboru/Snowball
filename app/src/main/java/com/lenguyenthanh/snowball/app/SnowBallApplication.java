@@ -2,9 +2,11 @@ package com.lenguyenthanh.snowball.app;
 
 import android.app.Application;
 import android.content.Context;
+import com.lenguyenthanh.snowball.app.support.Initializer;
+import com.lenguyenthanh.snowball.app.support.MainInitializer;
 import com.lenguyenthanh.snowball.app.support.SupportModule;
 import com.lenguyenthanh.snowball.data.network.NetworkModule;
-import com.lenguyenthanh.snowball.data.network.api.ApiModule;
+import com.lenguyenthanh.snowball.data.network.ApiModule;
 import dagger.Component;
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -34,7 +36,7 @@ public class SnowBallApplication extends Application {
     appComponent =
         DaggerSnowBallApplication_AppComponent.builder()
             .appModule(new AppModule(this))
-            .apiModule(new ApiModule("https://api"))
+            .apiModule(new ApiModule(Config.BASE_URL))
             .build();
     appComponent.inject(this);
   }

@@ -1,4 +1,4 @@
-package com.lenguyenthanh.snowball.domain.getVideos;
+package com.lenguyenthanh.snowball.domain.video;
 
 import com.lenguyenthanh.snowball.domain.Video;
 import java.util.List;

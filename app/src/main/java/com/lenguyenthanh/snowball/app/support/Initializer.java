@@ -1,4 +1,4 @@
-package com.lenguyenthanh.snowball.app;
+package com.lenguyenthanh.snowball.app.support;
 
 public interface Initializer {
   void initialize();

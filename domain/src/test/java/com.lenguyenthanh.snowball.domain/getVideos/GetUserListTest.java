@@ -17,6 +17,7 @@ package com.lenguyenthanh.snowball.domain.getVideos;
 
 import com.lenguyenthanh.snowball.domain.executor.PostExecutionThread;
 import com.lenguyenthanh.snowball.domain.executor.ThreadExecutor;
+import com.lenguyenthanh.snowball.domain.video.GetVideoList;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -28,14 +29,14 @@ import static org.mockito.Mockito.verifyZeroInteractions;
 
 public class GetUserListTest {
 
-  private GetVideoList getVideoList;
+  private com.lenguyenthanh.snowball.domain.video.GetVideoList getVideoList;
 
   @Mock
   private ThreadExecutor mockThreadExecutor;
   @Mock
   private PostExecutionThread mockPostExecutionThread;
   @Mock
-  private VideoRepository mockVideoRepository;
+  private com.lenguyenthanh.snowball.domain.video.VideoRepository mockVideoRepository;
 
   @Before
   public void setUp() {

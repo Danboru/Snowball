@@ -1,7 +1,6 @@
-package com.lenguyenthanh.snowball.app;
+package com.lenguyenthanh.snowball.app.support;
 
 import android.app.Application;
-import com.lenguyenthanh.snowball.app.support.ActivityHierarchyServer;
 import javax.inject.Inject;
 import timber.log.Timber;
 

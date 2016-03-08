@@ -1,8 +1,9 @@
-package com.lenguyenthanh.snowball.data.network.api;
+package com.lenguyenthanh.snowball.data.network;
 
 import android.support.annotation.NonNull;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lenguyenthanh.snowball.data.BuildConfig;
+import com.lenguyenthanh.snowball.data.feature.video.VideoService;
 import dagger.Module;
 import dagger.Provides;
 import javax.inject.Singleton;
@@ -49,5 +50,11 @@ public final class ApiModule {
   @NonNull
   Converter.Factory provideConverter(@NonNull ObjectMapper objectMapper) {
     return JacksonConverterFactory.create(objectMapper);
+  }
+
+  @Provides
+  @NonNull
+  VideoService provideVideoService(Retrofit retrofit){
+    return retrofit.create(VideoService.class);
   }
 }

@@ -1,4 +1,4 @@
-package com.lenguyenthanh.snowball.data.network.api;
+package com.lenguyenthanh.snowball.data.network;
 
 import android.support.annotation.NonNull;
 import java.util.concurrent.atomic.AtomicReference;

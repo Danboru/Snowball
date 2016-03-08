@@ -3,7 +3,7 @@ package com.lenguyenthanh.snowball;
 import android.app.Application;
 import android.support.annotation.NonNull;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
-import com.lenguyenthanh.snowball.app.Initializer;
+import com.lenguyenthanh.snowball.app.support.Initializer;
 import com.lenguyenthanh.snowball.app.support.ActivityHierarchyServer;
 import com.lenguyenthanh.snowball.data.network.OkHttpInterceptors;
 import com.lenguyenthanh.snowball.data.network.OkHttpNetworkInterceptors;
@@ -23,57 +23,67 @@ import static java.util.Collections.singletonList;
 @Module
 @Singleton
 public class DebugModule {
-    @Provides
-    @Singleton
-    MemoryLeakProxy provideLeakCanary(Application application){
-        return new MemoryLeakProxyImp(application);
-    }
+  @Provides
+  @Singleton
+  MemoryLeakProxy provideLeakCanary(Application application) {
+    return new MemoryLeakProxyImp(application);
+  }
 
-    @Provides
-    @Singleton
-    ActivityHierarchyServer provideActivityHierarchyServer(DebugActivityHierarchyServer server) {
-        return server;
-    }
+  @Provides
+  @Singleton
+  ActivityHierarchyServer provideActivityHierarchyServer(DebugActivityHierarchyServer server) {
+    return server;
+  }
 
-    @Provides
-    @Singleton
-    Timber.Tree provideTimber() {
-        return new Timber.DebugTree();
-    }
+  @Provides
+  @Singleton
+  Timber.Tree provideTimber() {
+    return new Timber.DebugTree();
+  }
 
-    @Provides
-    @Singleton
-    Interceptor provideDebugInterceptor(){
-        return new StethoInterceptor();
-    }
+  @Provides
+  @Singleton
+  Interceptor provideDebugInterceptor() {
+    return new StethoInterceptor();
+  }
 
-    @Provides
-    @Singleton
-    Initializer provideInitializer(DebugInitializer debugInitializer){
-        return debugInitializer;
-    }
+  @Provides
+  @Singleton
+  Initializer provideInitializer(DebugInitializer debugInitializer) {
+    return debugInitializer;
+  }
 
-    @Provides
-    @NonNull
-    @Singleton
-    public Paperwork providePaperwork(@NonNull Application application) {
-        return new Paperwork(application);
-    }
+  @Provides
+  @NonNull
+  @Singleton
+  public Paperwork providePaperwork(@NonNull Application application) {
+    return new Paperwork(application);
+  }
 
-    @Provides @Singleton @NonNull
-    public HttpLoggingInterceptor provideHttpLoggingInterceptor() {
-        return new HttpLoggingInterceptor(message -> Timber.d(message));
-    }
+  @Provides
+  @Singleton
+  @NonNull
+  public HttpLoggingInterceptor provideHttpLoggingInterceptor() {
+    HttpLoggingInterceptor httpLoggingInterceptor =
+        new HttpLoggingInterceptor(message -> Timber.d(message));
+    httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+    return httpLoggingInterceptor;
+  }
 
-    @Provides @OkHttpInterceptors
-    @Singleton @NonNull
-    public List<Interceptor> provideOkHttpInterceptors(@NonNull HttpLoggingInterceptor httpLoggingInterceptor) {
-        return singletonList(httpLoggingInterceptor);
-    }
+  @Provides
+  @OkHttpInterceptors
+  @Singleton
+  @NonNull
+  public List<Interceptor> provideOkHttpInterceptors(
+      @NonNull HttpLoggingInterceptor httpLoggingInterceptor) {
+    return singletonList(httpLoggingInterceptor);
+  }
 
-    @Provides @OkHttpNetworkInterceptors
-    @Singleton @NonNull
-    public List<Interceptor> provideOkHttpNetworkInterceptors() {
-        return singletonList(new StethoInterceptor());
-    }
+  @Provides
+  @OkHttpNetworkInterceptors
+  @Singleton
+  @NonNull
+  public List<Interceptor> provideOkHttpNetworkInterceptors() {
+    return singletonList(new StethoInterceptor());
+  }
 }

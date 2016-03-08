@@ -1,6 +1,6 @@
-package com.lenguyenthanh.snowball.common.time;
+package com.lenguyenthanh.snowball.util.time;
 
-import com.lenguyenthanh.snowball.common.DateFormatter;
+import com.lenguyenthanh.snowball.util.DateFormatter;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 import java.util.TimeZone;

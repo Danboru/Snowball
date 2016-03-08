@@ -2,7 +2,7 @@ package com.lenguyenthanh.snowball;
 
 import android.app.Application;
 import com.facebook.stetho.Stetho;
-import com.lenguyenthanh.snowball.app.MainInitializer;
+import com.lenguyenthanh.snowball.app.support.MainInitializer;
 import com.lenguyenthanh.snowball.app.support.ActivityHierarchyServer;
 import com.lenguyenthanh.snowball.models.MemoryLeakProxy;
 import hu.supercluster.paperwork.Paperwork;

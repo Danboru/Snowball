@@ -1,4 +1,4 @@
-package com.lenguyenthanh.snowball.data.network.api;
+package com.lenguyenthanh.snowball.data.feature.video;
 
 import android.support.annotation.NonNull;
 import com.lenguyenthanh.snowball.data.entity.VideoEntity;
@@ -8,6 +8,6 @@ import rx.Observable;
 
 public interface VideoService {
 
-  @GET("items") @NonNull
+  @GET("videos") @NonNull
   Observable<List<VideoEntity>> videos();
 }

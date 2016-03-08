@@ -9,7 +9,7 @@ public class VideoEntity {
   @JsonProperty("url")
   public String url;
 
-  @JsonProperty("name")
+  @JsonProperty("title")
   public String name;
 
   @JsonProperty("thumbnail")
