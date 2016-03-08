@@ -3,7 +3,6 @@ package com.lenguyenthanh.snowball;
 import android.app.Application;
 import com.facebook.stetho.Stetho;
 import com.lenguyenthanh.snowball.app.MainInitializer;
-import com.lenguyenthanh.snowball.app.setting.OkHttpClientSetting;
 import com.lenguyenthanh.snowball.app.support.ActivityHierarchyServer;
 import com.lenguyenthanh.snowball.models.MemoryLeakProxy;
 import hu.supercluster.paperwork.Paperwork;
@@ -18,10 +17,10 @@ public class DebugInitializer extends MainInitializer {
   private final MemoryLeakProxy memoryLeakProxy;
 
   @Inject
-  public DebugInitializer(final Timber.Tree logTree, final OkHttpClientSetting okHttpClientSetting,
-      final Application application, final ActivityHierarchyServer activityHierarchyServer,
-      final Paperwork paperwork, final MemoryLeakProxy memoryLeakProxy) {
-    super(logTree, okHttpClientSetting, application, activityHierarchyServer);
+  public DebugInitializer(final Timber.Tree logTree, final Application application,
+      final ActivityHierarchyServer activityHierarchyServer, final Paperwork paperwork,
+      final MemoryLeakProxy memoryLeakProxy) {
+    super(logTree, application, activityHierarchyServer);
     this.paperwork = paperwork;
     this.memoryLeakProxy = memoryLeakProxy;
   }

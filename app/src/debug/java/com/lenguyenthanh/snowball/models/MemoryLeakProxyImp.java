@@ -25,7 +25,7 @@ public class MemoryLeakProxyImp implements MemoryLeakProxy {
 
     @Override
     public void watch(@NonNull Object object) {
-        if (refWatcher != null) {
+        if (refWatcher != null && object != null) {
             refWatcher.watch(object);
         }
     }

@@ -20,7 +20,10 @@ public class DebugApp extends SnowBallApplication {
 
   @Override
   protected void initializeDaggerComponent() {
-    appComponent = DaggerDebugApp_AppComponent.builder().appModule(new AppModule(this)).build();
+    appComponent = DaggerDebugApp_AppComponent.builder()
+        .appModule(new AppModule(this))
+        .apiModule(new ApiModule("https://api"))
+        .build();
     appComponent.inject(this);
   }
 

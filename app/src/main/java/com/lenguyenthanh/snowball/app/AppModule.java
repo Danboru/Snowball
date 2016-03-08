@@ -17,7 +17,7 @@ public class AppModule {
   Application application;
 
   public AppModule(Application application) {
-    application = application;
+    this.application = application;
   }
 
   @Provides
