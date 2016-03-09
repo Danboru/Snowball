@@ -1,4 +1,4 @@
-package com.lenguyenthanh.snowball.app.support;
+package com.lenguyenthanh.snowball.app.config;
 
 import android.support.annotation.NonNull;
 import com.lenguyenthanh.snowball.data.network.OkHttpInterceptors;

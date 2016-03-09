@@ -10,6 +10,7 @@ import com.lenguyenthanh.snowball.R;
 import com.lenguyenthanh.snowball.app.SnowBallApplication;
 import com.lenguyenthanh.snowball.model.VideoModel;
 import com.lenguyenthanh.snowball.ui.base.BaseActivity;
+import com.lenguyenthanh.snowball.ui.network.Tracker;
 import com.lenguyenthanh.snowball.ui.widget.BetterViewAnimator;
 import java.util.Collection;
 import javax.inject.Inject;
@@ -18,6 +19,8 @@ public class VideoListActivity extends BaseActivity<VideoListView> implements Vi
 
   @Inject
   VideoListPresenter presenter;
+  @Inject
+  Tracker tracker;
 
   // View widget
   @Bind(R.id.listVideo)

@@ -6,6 +6,7 @@ import com.lenguyenthanh.snowball.data.BuildConfig;
 import com.lenguyenthanh.snowball.data.feature.video.VideoService;
 import dagger.Module;
 import dagger.Provides;
+import javax.inject.Named;
 import javax.inject.Singleton;
 import okhttp3.OkHttpClient;
 import retrofit2.Converter;
@@ -17,18 +18,11 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
 @Singleton
 public final class ApiModule {
 
-  @NonNull
-  private final ChangeableBaseUrl changeableBaseUrl;
-
-  public ApiModule(@NonNull String baseUrl) {
-    changeableBaseUrl = new ChangeableBaseUrl(baseUrl);
-  }
-
   @Provides
   @Singleton
   @NonNull
-  public ChangeableBaseUrl provideChangeableBaseUrl() {
-    return changeableBaseUrl;
+  public ChangeableBaseUrl provideChangeableBaseUrl(@Named("BASE_URL") @NonNull String baseUrl) {
+    return new ChangeableBaseUrl(baseUrl);
   }
 
   @Provides
@@ -36,8 +30,7 @@ public final class ApiModule {
   @NonNull
   public Retrofit provideRetrofit(@NonNull OkHttpClient okHttpClient,
       @NonNull ChangeableBaseUrl changeableBaseUrl, @NonNull Converter.Factory factory) {
-    return new Retrofit.Builder()
-        .baseUrl(changeableBaseUrl)
+    return new Retrofit.Builder().baseUrl(changeableBaseUrl)
         .client(okHttpClient)
         .addConverterFactory(factory)
         .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
@@ -54,7 +47,7 @@ public final class ApiModule {
 
   @Provides
   @NonNull
-  VideoService provideVideoService(Retrofit retrofit){
+  VideoService provideVideoService(Retrofit retrofit) {
     return retrofit.create(VideoService.class);
   }
 }

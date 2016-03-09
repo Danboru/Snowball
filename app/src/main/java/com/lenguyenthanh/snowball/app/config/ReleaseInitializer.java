@@ -1,4 +1,4 @@
-package com.lenguyenthanh.snowball.app.support;
+package com.lenguyenthanh.snowball.app.config;
 
 import javax.inject.Inject;
 import timber.log.Timber;

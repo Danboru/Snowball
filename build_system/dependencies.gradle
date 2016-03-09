@@ -38,6 +38,8 @@ ext.versions = [
         paperwork              : '1.2.4',
         icepick                : '3.1.0',
         nimble                 : '0.5.1',
+        picasso                : '2.5.2',
+        picassoOkHttpDownloader: '1.0.2',
 
         junit                  : '4.12',
         assertJ                : '1.7.1',
@@ -71,6 +73,8 @@ ext.libraries = [
         supportRecyclerView     : "com.android.support:recyclerview-v7:$versions.supportLibs",
         supportCardView         : "com.android.support:cardview-v7:$versions.supportLibs",
 
+        picasso                 : "com.squareup.picasso:picasso:$versions.picasso",
+        picassoOkHttpDownloader : "com.jakewharton.picasso:picasso2-okhttp3-downloader:$versions.picassoOkHttpDownloader",
         butterKnife             : "com.jakewharton:butterknife:$versions.butterKnife",
         timber                  : "com.jakewharton.timber:timber:$versions.timber",
 

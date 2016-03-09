@@ -3,12 +3,14 @@ package com.lenguyenthanh.snowball.app;
 import android.app.Application;
 import android.support.annotation.NonNull;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.lenguyenthanh.snowball.app.config.Configuration;
 import com.lenguyenthanh.snowball.data.executor.JobExecutor;
 import com.lenguyenthanh.snowball.UIThread;
 import com.lenguyenthanh.snowball.domain.executor.PostExecutionThread;
 import com.lenguyenthanh.snowball.domain.executor.ThreadExecutor;
 import dagger.Module;
 import dagger.Provides;
+import javax.inject.Named;
 import javax.inject.Singleton;
 
 @Module
@@ -34,13 +36,32 @@ public class AppModule {
     return new ObjectMapper();
   }
 
-  @Provides @Singleton @NonNull
+  @Provides
+  @Singleton
+  @NonNull
   ThreadExecutor provideThreadExecutor(JobExecutor jobExecutor) {
     return jobExecutor;
   }
 
-  @Provides @Singleton @NonNull
+  @Provides
+  @Singleton
+  @NonNull
   PostExecutionThread providePostExecutionThread(UIThread uiThread) {
     return uiThread;
+  }
+
+  @Provides
+  @Singleton
+  @NonNull
+  Configuration provideConfiguration() {
+    return new Configuration.SimpleConfiguration();
+  }
+
+  @Provides
+  @Singleton
+  @NonNull
+  @Named("BASE_URL")
+  String provideBaseUrl(Configuration configuration){
+    return configuration.getBaseApiUrl();
   }
 }

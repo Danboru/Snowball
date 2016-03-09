@@ -1,4 +1,4 @@
-package com.lenguyenthanh.snowball.app.support;
+package com.lenguyenthanh.snowball.app.config;
 
 import android.app.Application;
 import javax.inject.Inject;

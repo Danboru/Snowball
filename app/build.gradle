@@ -111,8 +111,8 @@ dependencies {
 
   compile libraries.butterKnife
   compile libraries.timber
-
-
+  compile libraries.picasso
+  compile libraries.picassoOkHttpDownloader
 
   // saving view state
   compile libraries.icepick
