@@ -1,4 +1,4 @@
-package com.lenguyenthanh.snowball.ui.videos;
+package com.lenguyenthanh.snowball.ui.feature.videos;
 
 import com.lenguyenthanh.nimble.NimbleView;
 import com.lenguyenthanh.snowball.model.VideoModel;
@@ -8,13 +8,11 @@ public interface VideoListView extends NimbleView {
 
   void showLoading();
 
-  void hideLoading();
-
   void showRetry();
 
-  void hideRetry();
-
   void showError(String message);
+
+  void hideRefresh();
 
   void renderVideoList(Collection<VideoModel> userModelCollection);
 }

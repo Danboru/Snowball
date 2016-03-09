@@ -1,4 +1,4 @@
-package com.lenguyenthanh.snowball.ui.videos;
+package com.lenguyenthanh.snowball.ui.feature.videos;
 
 import com.lenguyenthanh.snowball.domain.DefaultSubscriber;
 import com.lenguyenthanh.snowball.domain.UseCase;
@@ -12,6 +12,7 @@ import com.lenguyenthanh.snowball.ui.base.SaveStatePresenter;
 import java.util.Collection;
 import java.util.List;
 import javax.inject.Inject;
+import rx.Subscriber;
 
 public class VideoListPresenterImpl extends SaveStatePresenter<VideoListView>
     implements VideoListPresenter {
@@ -35,9 +36,17 @@ public class VideoListPresenterImpl extends SaveStatePresenter<VideoListView>
 
   @Override
   public void loadVideoList() {
-    getView().hideLoading();
     getView().showLoading();
-    getVideoList.execute(new VideoListSubscriber());
+    getVideoList(new LoadVideoListSubscriber());
+  }
+
+  @Override
+  public void doRefresh() {
+    getVideoList(new RefreshVideoListSubscriber());
+  }
+
+  private void getVideoList(Subscriber<List<Video>> subscriber) {
+    getVideoList.execute(subscriber);
   }
 
   private void showErrorMessage(ErrorBundle errorBundle) {
@@ -51,18 +60,31 @@ public class VideoListPresenterImpl extends SaveStatePresenter<VideoListView>
     getView().renderVideoList(videoModelCollection);
   }
 
-  private final class VideoListSubscriber extends DefaultSubscriber<List<Video>> {
+  private final class LoadVideoListSubscriber extends DefaultSubscriber<List<Video>> {
+
+    @Override
+    public void onError(Throwable e) {
+      VideoListPresenterImpl.this.showErrorMessage(new DefaultErrorBundle((Exception) e));
+      getView().showRetry();
+    }
+
+    @Override
+    public void onNext(List<Video> videos) {
+      VideoListPresenterImpl.this.showVideoCollectionInView(videos);
+    }
+  }
+
+  private final class RefreshVideoListSubscriber extends DefaultSubscriber<List<Video>> {
 
     @Override
     public void onCompleted() {
-      getView().hideLoading();
+      getView().hideRefresh();
     }
 
     @Override
     public void onError(Throwable e) {
-      getView().hideLoading();
       VideoListPresenterImpl.this.showErrorMessage(new DefaultErrorBundle((Exception) e));
-      getView().showRetry();
+      getView().hideRefresh();
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.lenguyenthanh.snowball.ui.videos;
+package com.lenguyenthanh.snowball.ui.feature.videos;
 
 import com.lenguyenthanh.snowball.app.SnowBallApplication;
 import com.lenguyenthanh.snowball.di.scope.ActivityScope;

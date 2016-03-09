@@ -1,4 +1,4 @@
-package com.lenguyenthanh.snowball.ui.videos;
+package com.lenguyenthanh.snowball.ui.feature.videos;
 
 import android.app.Activity;
 import com.lenguyenthanh.snowball.data.feature.video.VideoRepositoryImpl;
