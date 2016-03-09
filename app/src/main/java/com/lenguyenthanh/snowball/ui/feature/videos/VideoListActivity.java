@@ -33,6 +33,7 @@ public class VideoListActivity extends BaseActivity<VideoListView> implements Vi
   @OnClick(R.id.btRetry)
   void onBtRetryClicked(){
     presenter().loadVideoList();
+    tracker.track("Retry");
   }
 
   @Override
@@ -40,6 +41,7 @@ public class VideoListActivity extends BaseActivity<VideoListView> implements Vi
     super.onCreate(savedInstanceState);
     initializeUI();
     presenter().loadVideoList();
+    tracker.track("onCreate");
   }
 
   private void initializeUI(){
