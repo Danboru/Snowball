@@ -31,13 +31,13 @@ public class VideoListModule extends ActivityModule {
 
   @Provides
   @ActivityScope
-  VideoRepository provideVideoRepository(VideoRepositoryImpl repository){
+  VideoRepository provideVideoRepository(VideoRepositoryImpl repository) {
     return repository;
   }
 
   @Provides
   @ActivityScope
-  UseCase provideGetVideoList(GetVideoList getVideoList){
+  UseCase provideGetVideoList(GetVideoList getVideoList) {
     return getVideoList;
   }
 }

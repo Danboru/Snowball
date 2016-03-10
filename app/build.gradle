@@ -118,6 +118,9 @@ dependencies {
   compile libraries.icepick
   apt libraries.icepickCompiler
 
+  compile libraries.videoPlayerManager
+  compile libraries.listVisibilityUtils
+
   // debug tools
   debugCompile libraries.okHttpLoggingInterceptor
   debugCompile libraries.stetho

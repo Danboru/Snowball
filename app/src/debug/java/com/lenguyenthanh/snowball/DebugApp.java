@@ -1,7 +1,6 @@
 package com.lenguyenthanh.snowball;
 
 import com.lenguyenthanh.snowball.app.AppModule;
-import com.lenguyenthanh.snowball.app.Config;
 import com.lenguyenthanh.snowball.app.SnowBallApplication;
 import com.lenguyenthanh.snowball.data.network.NetworkModule;
 import com.lenguyenthanh.snowball.data.network.ApiModule;

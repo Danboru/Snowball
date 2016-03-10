@@ -2,7 +2,7 @@ package com.lenguyenthanh.snowball.ui.feature.videos;
 
 import com.lenguyenthanh.snowball.app.SnowBallApplication;
 import com.lenguyenthanh.snowball.di.scope.ActivityScope;
-import com.lenguyenthanh.snowball.domain.video.VideoRepository;
+import com.lenguyenthanh.snowball.ui.feature.videos.media.VideoPlayerRecyclerView;
 
 @dagger.Component(
     dependencies = SnowBallApplication.AppComponent.class,
@@ -11,5 +11,5 @@ import com.lenguyenthanh.snowball.domain.video.VideoRepository;
 @ActivityScope
 public interface VideoListComponent {
   void inject(VideoListActivity mainActivity);
-  VideoRepository videoRepository();
+  void inject(VideoPlayerRecyclerView recyclerView);
 }

@@ -3,13 +3,13 @@ package com.lenguyenthanh.snowball.ui.feature.videos;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.RecyclerView;
 import butterknife.Bind;
 import butterknife.OnClick;
 import com.lenguyenthanh.snowball.R;
 import com.lenguyenthanh.snowball.app.SnowBallApplication;
 import com.lenguyenthanh.snowball.model.VideoModel;
 import com.lenguyenthanh.snowball.ui.base.BaseActivity;
+import com.lenguyenthanh.snowball.ui.feature.videos.media.VideoPlayerRecyclerView;
 import com.lenguyenthanh.snowball.ui.network.Tracker;
 import com.lenguyenthanh.snowball.ui.widget.BetterViewAnimator;
 import java.util.Collection;
@@ -21,10 +21,11 @@ public class VideoListActivity extends BaseActivity<VideoListView> implements Vi
   VideoListPresenter presenter;
   @Inject
   Tracker tracker;
+  private VideoListComponent component;
 
   // View widget
   @Bind(R.id.listVideo)
-  RecyclerView listVideo;
+  VideoPlayerRecyclerView listVideo;
   @Bind(R.id.swipeLayout)
   SwipeRefreshLayout swipeLayout;
   @Bind(R.id.contentLayout)
@@ -46,11 +47,12 @@ public class VideoListActivity extends BaseActivity<VideoListView> implements Vi
 
   private void initializeUI(){
     swipeLayout.setOnRefreshListener(() -> presenter().doRefresh());
+    listVideo.initialize(component);
   }
 
   @Override
   protected void buildComponent(SnowBallApplication.AppComponent appComponent) {
-    VideoListComponent component = DaggerVideoListComponent.builder()
+    component = DaggerVideoListComponent.builder()
         .videoListModule(new VideoListModule(this))
         .appComponent(appComponent)
         .build();
@@ -96,5 +98,22 @@ public class VideoListActivity extends BaseActivity<VideoListView> implements Vi
   @Override
   public void renderVideoList(final Collection<VideoModel> userModelCollection) {
     showContent();
+    listVideo.setVideoItems(userModelCollection);
+  }
+
+  @Override
+  protected void onResume() {
+    super.onResume();
+    if(listVideo != null){
+      listVideo.onResume();
+    }
+  }
+
+  @Override
+  protected void onStop() {
+    super.onStop();
+    if(listVideo != null){
+      listVideo.onStop();
+    }
   }
 }
