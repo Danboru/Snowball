@@ -7,6 +7,7 @@ import com.lenguyenthanh.snowball.domain.UseCase;
 import com.lenguyenthanh.snowball.domain.video.GetVideoList;
 import com.lenguyenthanh.snowball.domain.video.VideoRepository;
 import com.lenguyenthanh.snowball.ui.base.ActivityModule;
+import com.lenguyenthanh.snowball.util.ui.NavigationCommand;
 import dagger.Module;
 import dagger.Provides;
 
@@ -19,14 +20,14 @@ public class VideoListModule extends ActivityModule {
 
   @Provides
   @ActivityScope
-  VideoListPresenter providePresenter(VideoListPresenterImpl presenter) {
-    return presenter;
+  Activity activity() {
+    return this.activity;
   }
 
   @Provides
   @ActivityScope
-  Activity activity() {
-    return this.activity;
+  VideoListPresenter providePresenter(VideoListPresenterImpl presenter) {
+    return presenter;
   }
 
   @Provides
@@ -39,5 +40,11 @@ public class VideoListModule extends ActivityModule {
   @ActivityScope
   UseCase provideGetVideoList(GetVideoList getVideoList) {
     return getVideoList;
+  }
+
+  @Provides
+  @ActivityScope
+  NavigationCommand provideNavigationCommand(Activity activity){
+    return new PlayVideoNavigationCommand(activity);
   }
 }

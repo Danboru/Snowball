@@ -12,6 +12,7 @@ import com.lenguyenthanh.snowball.ui.base.BaseActivity;
 import com.lenguyenthanh.snowball.ui.feature.videos.media.VideoPlayerRecyclerView;
 import com.lenguyenthanh.snowball.ui.network.Tracker;
 import com.lenguyenthanh.snowball.ui.widget.BetterViewAnimator;
+import com.lenguyenthanh.snowball.ui.widget.ItemClickSupport;
 import java.util.Collection;
 import javax.inject.Inject;
 
@@ -21,6 +22,7 @@ public class VideoListActivity extends BaseActivity<VideoListView> implements Vi
   VideoListPresenter presenter;
   @Inject
   Tracker tracker;
+
   private VideoListComponent component;
 
   // View widget
@@ -32,7 +34,7 @@ public class VideoListActivity extends BaseActivity<VideoListView> implements Vi
   BetterViewAnimator contentLayout;
 
   @OnClick(R.id.btRetry)
-  void onBtRetryClicked(){
+  void onBtRetryClicked() {
     presenter().loadVideoList();
     tracker.track("Retry");
   }
@@ -45,9 +47,11 @@ public class VideoListActivity extends BaseActivity<VideoListView> implements Vi
     tracker.track("onCreate");
   }
 
-  private void initializeUI(){
+  private void initializeUI() {
     swipeLayout.setOnRefreshListener(() -> presenter().doRefresh());
     listVideo.initialize(component);
+    ItemClickSupport.addTo(listVideo)
+        .setOnItemClickListener((recyclerView, position, v) -> presenter.playVideo());
   }
 
   @Override
@@ -90,7 +94,7 @@ public class VideoListActivity extends BaseActivity<VideoListView> implements Vi
 
   @Override
   public void hideRefresh() {
-    if(swipeLayout.isRefreshing()){
+    if (swipeLayout.isRefreshing()) {
       swipeLayout.setRefreshing(false);
     }
   }
@@ -104,7 +108,7 @@ public class VideoListActivity extends BaseActivity<VideoListView> implements Vi
   @Override
   protected void onResume() {
     super.onResume();
-    if(listVideo != null){
+    if (listVideo != null) {
       listVideo.onResume();
     }
   }
@@ -112,7 +116,7 @@ public class VideoListActivity extends BaseActivity<VideoListView> implements Vi
   @Override
   protected void onStop() {
     super.onStop();
-    if(listVideo != null){
+    if (listVideo != null) {
       listVideo.onStop();
     }
   }

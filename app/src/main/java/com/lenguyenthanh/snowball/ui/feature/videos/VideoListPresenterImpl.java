@@ -3,12 +3,14 @@ package com.lenguyenthanh.snowball.ui.feature.videos;
 import com.lenguyenthanh.snowball.domain.DefaultSubscriber;
 import com.lenguyenthanh.snowball.domain.UseCase;
 import com.lenguyenthanh.snowball.domain.Video;
+import com.lenguyenthanh.snowball.domain.common.Lists;
 import com.lenguyenthanh.snowball.domain.exception.DefaultErrorBundle;
 import com.lenguyenthanh.snowball.domain.exception.ErrorBundle;
 import com.lenguyenthanh.snowball.exception.ErrorMessageFactory;
 import com.lenguyenthanh.snowball.model.VideoModel;
 import com.lenguyenthanh.snowball.model.VideoModelMapper;
 import com.lenguyenthanh.snowball.ui.base.SaveStatePresenter;
+import com.lenguyenthanh.snowball.util.ui.NavigationCommand;
 import java.util.Collection;
 import java.util.List;
 import javax.inject.Inject;
@@ -20,13 +22,17 @@ public class VideoListPresenterImpl extends SaveStatePresenter<VideoListView>
   private final UseCase getVideoList;
   private final VideoModelMapper videoModelMapper;
   private final ErrorMessageFactory errorMessageFactory;
+  private final NavigationCommand navigationCommand;
+
+  private Collection<VideoModel> videoModels;
 
   @Inject
   public VideoListPresenterImpl(final UseCase getVideoList, final VideoModelMapper videoModelMapper,
-      final ErrorMessageFactory errorMessageFactory) {
+      final ErrorMessageFactory errorMessageFactory, final NavigationCommand navigationCommand) {
     this.getVideoList = getVideoList;
     this.videoModelMapper = videoModelMapper;
     this.errorMessageFactory = errorMessageFactory;
+    this.navigationCommand = navigationCommand;
   }
 
   @Override
@@ -36,13 +42,36 @@ public class VideoListPresenterImpl extends SaveStatePresenter<VideoListView>
 
   @Override
   public void loadVideoList() {
-    getView().showLoading();
-    getVideoList(new LoadVideoListSubscriber());
+    if (Lists.isEmptyOrNull(videoModels)) {
+      getView().showLoading();
+      getVideoList(new LoadVideoListSubscriber());
+    } else {
+      getView().renderVideoList(videoModels);
+    }
   }
 
   @Override
   public void doRefresh() {
     getVideoList(new RefreshVideoListSubscriber());
+  }
+
+  @Override
+  public void playVideo() {
+    ((PlayVideoNavigationCommand) navigationCommand).setUrls(getUrls());
+    navigationCommand.navigate();
+  }
+
+  private String[] getUrls() {
+    if (Lists.isEmptyOrNull(videoModels)) {
+      return new String[0];
+    }
+
+    String[] urls = new String[videoModels.size()];
+    int i = 0;
+    for (VideoModel video : videoModels) {
+      urls[i++] = video.url();
+    }
+    return urls;
   }
 
   private void getVideoList(Subscriber<List<Video>> subscriber) {
@@ -55,9 +84,8 @@ public class VideoListPresenterImpl extends SaveStatePresenter<VideoListView>
   }
 
   private void showVideoCollectionInView(Collection<Video> usersCollection) {
-    final Collection<VideoModel> videoModelCollection =
-        this.videoModelMapper.transform(usersCollection);
-    getView().renderVideoList(videoModelCollection);
+    videoModels = this.videoModelMapper.transform(usersCollection);
+    getView().renderVideoList(videoModels);
   }
 
   private final class LoadVideoListSubscriber extends DefaultSubscriber<List<Video>> {
