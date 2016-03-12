@@ -11,13 +11,19 @@ import java.util.List;
 import java.util.Queue;
 import timber.log.Timber;
 
-class VideosQueue {
+public class VideosQueue {
   private final Pair<VideoView, Integer> videoView1;
   private final Pair<VideoView, Integer> videoView2;
   private final BetterViewAnimator viewAnimator;
 
   private Queue<String> urls;
   private Queue<Pair<VideoView, Integer>> videoViewsQueue;
+
+  private PlayVideoListener playVideoListener;
+
+  public void setPlayVideoListener(final PlayVideoListener playVideoListener) {
+    this.playVideoListener = playVideoListener;
+  }
 
   public void setUrls(final List<String> urls) {
     this.urls = new LinkedList<>(urls);
@@ -32,6 +38,9 @@ class VideosQueue {
   }
 
   public void start() {
+    if(playVideoListener != null){
+      playVideoListener.isVideoStarted(false);
+    }
     add();
   }
 
@@ -41,7 +50,6 @@ class VideosQueue {
     if (urls.size() != 0) {
       add(urls.remove());
     }
-    Timber.d("videoViewsQueue %d", videoViewsQueue.size());
   }
 
   private void add(String url) {
@@ -67,6 +75,9 @@ class VideosQueue {
     videoView.first.setOnPreparedListener(mp -> mp.setOnInfoListener((mp1, what, extra) -> {
       Timber.d("onPrepared %d %d", what, extra);
       if(what == MediaPlayer.MEDIA_INFO_VIDEO_RENDERING_START) {
+        if(playVideoListener != null){
+          playVideoListener.isVideoStarted(true);
+        }
         add();
         videoViewsQueue.remove();
       }
@@ -83,6 +94,13 @@ class VideosQueue {
     if (nextVideoView != null) {
       Timber.d("playNextVideo %d", nextVideoView.second);
       viewAnimator.setDisplayedChildId(nextVideoView.second);
+      if(playVideoListener != null){
+        playVideoListener.isVideoStarted(false);
+      }
     }
+  }
+
+  public interface PlayVideoListener{
+    void isVideoStarted(boolean isVideoStarted);
   }
 }

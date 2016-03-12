@@ -3,14 +3,20 @@ package com.lenguyenthanh.snowball.ui.feature.playVideos;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ProgressBar;
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import com.lenguyenthanh.snowball.R;
 import com.lenguyenthanh.snowball.ui.feature.playVideos.media.VideosPlayer;
 import java.util.Arrays;
 
 public class PlayVideoActivity extends Activity {
   private static final String EXTRA_URLS = "EXTRA.URLS";
+  @Bind(R.id.progressBar)
+  ProgressBar progressBar;
 
   public static void showMe(Activity activity, final String[] urls) {
     Intent intent = new Intent(activity, PlayVideoActivity.class);
@@ -18,13 +24,15 @@ public class PlayVideoActivity extends Activity {
     activity.startActivity(intent);
   }
 
-  private VideosPlayer videosPlayer;
+  @Bind(R.id.videosPlayer)
+  VideosPlayer videosPlayer;
 
   @Override
   protected void onCreate(final Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     requestFullScreen();
     setContentView(R.layout.activity_play_video);
+    ButterKnife.bind(this);
     initializeUI();
   }
 
@@ -35,9 +43,21 @@ public class PlayVideoActivity extends Activity {
   }
 
   private void initializeUI() {
-    videosPlayer = (VideosPlayer) findViewById(R.id.videosPlayer);
     String[] urls = getIntent().getStringArrayExtra(EXTRA_URLS);
+    videosPlayer.setPlayVideoListener(isVideoStarted -> {
+      if(isVideoStarted){
+        progressBar.setVisibility(View.INVISIBLE);
+      }else{
+        progressBar.setVisibility(View.VISIBLE);
+      }
+    });
     videosPlayer.setUrls(Arrays.asList(urls));
     videosPlayer.start();
+  }
+
+  @Override
+  protected void onDestroy() {
+    super.onDestroy();
+    ButterKnife.unbind(this);
   }
 }

@@ -66,7 +66,7 @@ public class DebugModule {
   public HttpLoggingInterceptor provideHttpLoggingInterceptor() {
     HttpLoggingInterceptor httpLoggingInterceptor =
         new HttpLoggingInterceptor(message -> Timber.d(message));
-    httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+    httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
     return httpLoggingInterceptor;
   }
 

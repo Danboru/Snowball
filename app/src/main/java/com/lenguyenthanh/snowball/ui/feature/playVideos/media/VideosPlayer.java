@@ -23,6 +23,10 @@ public class VideosPlayer extends FrameLayout {
 
   private VideosQueue queue;
 
+  public void setPlayVideoListener(final VideosQueue.PlayVideoListener playVideoListener) {
+    this.queue.setPlayVideoListener(playVideoListener);
+  }
+
   public void start() {
     queue.start();
   }
