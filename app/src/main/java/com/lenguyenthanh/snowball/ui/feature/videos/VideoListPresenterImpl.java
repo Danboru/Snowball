@@ -8,7 +8,7 @@ import com.lenguyenthanh.snowball.domain.exception.DefaultErrorBundle;
 import com.lenguyenthanh.snowball.domain.exception.ErrorBundle;
 import com.lenguyenthanh.snowball.exception.ErrorMessageFactory;
 import com.lenguyenthanh.snowball.model.VideoModel;
-import com.lenguyenthanh.snowball.model.VideoModelMapper;
+import com.lenguyenthanh.snowball.model.VideoModelDataMapper;
 import com.lenguyenthanh.snowball.ui.base.SaveStatePresenter;
 import com.lenguyenthanh.snowball.util.ui.NavigationCommand;
 import java.util.Collection;
@@ -20,14 +20,14 @@ public class VideoListPresenterImpl extends SaveStatePresenter<VideoListView>
     implements VideoListPresenter {
 
   private final UseCase getVideoList;
-  private final VideoModelMapper videoModelMapper;
+  private final VideoModelDataMapper videoModelMapper;
   private final ErrorMessageFactory errorMessageFactory;
   private final NavigationCommand navigationCommand;
 
   private Collection<VideoModel> videoModels;
 
   @Inject
-  public VideoListPresenterImpl(final UseCase getVideoList, final VideoModelMapper videoModelMapper,
+  public VideoListPresenterImpl(final UseCase getVideoList, final VideoModelDataMapper videoModelMapper,
       final ErrorMessageFactory errorMessageFactory, final NavigationCommand navigationCommand) {
     this.getVideoList = getVideoList;
     this.videoModelMapper = videoModelMapper;

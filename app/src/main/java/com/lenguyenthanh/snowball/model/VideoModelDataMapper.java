@@ -9,10 +9,10 @@ import java.util.Collections;
 import javax.inject.Inject;
 
 @ActivityScope
-public class VideoModelMapper {
+public class VideoModelDataMapper {
 
   @Inject
-  public VideoModelMapper() {
+  public VideoModelDataMapper() {
   }
 
   public VideoModel transform(Video video) {

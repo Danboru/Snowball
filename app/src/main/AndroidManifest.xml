@@ -17,6 +17,7 @@
     <activity
       android:name=".ui.feature.videos.VideoListActivity"
       android:label="@string/app_name"
+      android:screenOrientation="portrait"
       >
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
@@ -35,7 +36,9 @@
           />
       </intent-filter>
     </activity>
-    <activity android:name=".ui.feature.playVideos.PlayVideoActivity"/>
+    <activity android:name=".ui.feature.playVideos.PlayVideoActivity"
+      android:screenOrientation="portrait"
+      />
   </application>
 
 </manifest>

@@ -5,15 +5,19 @@
   android:orientation="vertical"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
+  android:layout_gravity="center"
+  android:background="@android:color/black"
   >
   <VideoView
     android:id="@+id/videoView1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
     />
   <VideoView
     android:id="@+id/videoView2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
     />
 </com.lenguyenthanh.snowball.ui.widget.BetterViewAnimator>

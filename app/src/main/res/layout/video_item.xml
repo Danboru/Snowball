@@ -17,14 +17,12 @@
 
     <com.volokh.danylo.video_player_manager.ui.VideoPlayerView
       android:id="@+id/player"
-      android:layout_above="@id/title"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       />
 
     <ImageView
       android:id="@+id/cover"
-      android:layout_above="@id/title"
       android:background="@android:color/white"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
@@ -32,7 +30,7 @@
 
     <TextView
       android:id="@+id/title"
-      android:layout_alignParentBottom="true"
+      android:layout_alignParentTop="true"
       style="@style/BaseText"
       />
   </RelativeLayout>

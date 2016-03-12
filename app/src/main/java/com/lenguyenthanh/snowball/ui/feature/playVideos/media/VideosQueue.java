@@ -1,5 +1,7 @@
 package com.lenguyenthanh.snowball.ui.feature.playVideos.media;
 
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.support.v4.util.Pair;
 import android.widget.VideoView;
 import com.lenguyenthanh.snowball.ui.widget.BetterViewAnimator;
@@ -7,6 +9,7 @@ import java.util.ArrayDeque;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import timber.log.Timber;
 
 class VideosQueue {
   private final Pair<VideoView, Integer> videoView1;
@@ -30,11 +33,19 @@ class VideosQueue {
 
   public void start() {
     add();
-    add();
-    videoViewsQueue.remove().first.start();
+  }
+
+  private void add() {
+    Timber.d("add() %d", urls.size());
+    Timber.d("videoViewsQueue %d", videoViewsQueue.size());
+    if (urls.size() != 0) {
+      add(urls.remove());
+    }
+    Timber.d("videoViewsQueue %d", videoViewsQueue.size());
   }
 
   private void add(String url) {
+    Timber.d("add() %s", url);
     Pair<VideoView, Integer> videoView = getUnusedVideoView();
     videoViewsQueue.add(prepare(videoView, url));
   }
@@ -52,25 +63,26 @@ class VideosQueue {
 
   private Pair<VideoView, Integer> prepare(final Pair<VideoView, Integer> videoView,
       final String url) {
-    videoView.first.setVideoPath(url);
-    //videoView.first.start();
-    //videoView.first.setOnPreparedListener(MediaPlayer::pause);
+    videoView.first.setVideoURI(Uri.parse(url));
+    videoView.first.setOnPreparedListener(mp -> mp.setOnInfoListener((mp1, what, extra) -> {
+      Timber.d("onPrepared %d %d", what, extra);
+      if(what == MediaPlayer.MEDIA_INFO_VIDEO_RENDERING_START) {
+        add();
+        videoViewsQueue.remove();
+      }
+      return false;
+    }));
     videoView.first.setOnCompletionListener(mp -> playNextVideo());
+    videoView.first.start();
     return videoView;
   }
 
   private void playNextVideo() {
-    Pair<VideoView, Integer> nextVideoView = videoViewsQueue.poll();
-    if(nextVideoView != null) {
+    Timber.d("playNextVideo");
+    Pair<VideoView, Integer> nextVideoView = videoViewsQueue.peek();
+    if (nextVideoView != null) {
+      Timber.d("playNextVideo %d", nextVideoView.second);
       viewAnimator.setDisplayedChildId(nextVideoView.second);
-      nextVideoView.first.start();
-      add();
-    }
-  }
-
-  private void add() {
-    if (urls.size() != 0) {
-      add(urls.remove());
     }
   }
 }

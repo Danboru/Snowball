@@ -3,6 +3,7 @@ package com.lenguyenthanh.snowball.data.entity;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class VideoEntity {
+
   @JsonProperty("id")
   public int videoId;
 

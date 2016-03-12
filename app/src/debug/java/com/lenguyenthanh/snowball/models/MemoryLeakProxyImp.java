@@ -3,7 +3,6 @@ package com.lenguyenthanh.snowball.models;
 import android.app.Application;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
 
 public class MemoryLeakProxyImp implements MemoryLeakProxy {
@@ -20,13 +19,13 @@ public class MemoryLeakProxyImp implements MemoryLeakProxy {
 
     @Override
     public void init() {
-        refWatcher = LeakCanary.install(application);
+        //refWatcher = LeakCanary.install(application);
     }
 
     @Override
     public void watch(@NonNull Object object) {
-        if (refWatcher != null) {
-            refWatcher.watch(object);
-        }
+        //if (refWatcher != null) {
+        //    refWatcher.watch(object);
+        //}
     }
 }
