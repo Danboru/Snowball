@@ -33,6 +33,11 @@
       android:layout_alignParentTop="true"
       style="@style/BaseText"
       />
+    <TextView
+      android:id="@+id/visibility_percents"
+      android:layout_centerInParent="true"
+      android:visibility="gone"
+      style="@style/BaseText"/>
   </RelativeLayout>
 
 </android.support.v7.widget.CardView>

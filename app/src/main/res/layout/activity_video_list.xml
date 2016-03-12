@@ -4,6 +4,17 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   >
+  <android.support.design.widget.AppBarLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+    <android.support.v7.widget.Toolbar
+      android:id="@+id/toolbar"
+      android:layout_height="?attr/actionBarSize"
+      android:layout_width="match_parent"
+      android:minHeight="?attr/actionBarSize"
+      />
+  </android.support.design.widget.AppBarLayout>
   <com.lenguyenthanh.snowball.ui.widget.BetterViewAnimator
     android:id="@+id/contentLayout"
     android:layout_width="match_parent"

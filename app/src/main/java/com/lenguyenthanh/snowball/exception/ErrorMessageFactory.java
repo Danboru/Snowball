@@ -20,7 +20,7 @@ public class ErrorMessageFactory {
     String message = application.getString(R.string.app_name);
 
     if (exception instanceof NetworkConnectionException) {
-      message = application.getString(R.string.app_name);
+      message = application.getString(R.string.network_error_message);
     }
 
     return message;

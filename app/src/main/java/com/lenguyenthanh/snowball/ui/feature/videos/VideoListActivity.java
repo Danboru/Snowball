@@ -3,6 +3,7 @@ package com.lenguyenthanh.snowball.ui.feature.videos;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.Toolbar;
 import butterknife.Bind;
 import butterknife.OnClick;
 import com.lenguyenthanh.snowball.R;
@@ -22,6 +23,8 @@ public class VideoListActivity extends BaseActivity<VideoListView> implements Vi
   VideoListPresenter presenter;
   @Inject
   Tracker tracker;
+  @Bind(R.id.toolbar)
+  Toolbar toolbar;
 
   private VideoListComponent component;
 
@@ -52,6 +55,7 @@ public class VideoListActivity extends BaseActivity<VideoListView> implements Vi
     listVideo.initialize(component);
     ItemClickSupport.addTo(listVideo)
         .setOnItemClickListener((recyclerView, position, v) -> presenter.playVideo());
+    toolbar.setTitle(getString(R.string.app_name));
   }
 
   @Override

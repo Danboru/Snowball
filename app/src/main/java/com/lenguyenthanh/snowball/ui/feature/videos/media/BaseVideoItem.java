@@ -73,6 +73,7 @@ public abstract class BaseVideoItem implements VideoItem, ListItem {
     videoViewHolder.mPlayer.addMediaPlayerListener(
         new MediaPlayerWrapper.MainThreadMediaPlayerListener() {
           int count = 0;
+
           @Override
           public void onVideoSizeChangedMainThread(int width, int height) {
             Timber.d("----onVideoSizeChangedMainThread %d %d", width, height);
@@ -80,14 +81,14 @@ public abstract class BaseVideoItem implements VideoItem, ListItem {
 
           @Override
           public void onVideoPreparedMainThread() {
-            // When video is prepared it's about to start playback. So we hide the cover
-            videoViewHolder.mCover.setVisibility(View.INVISIBLE);
-            Timber.d("----onVideoPreparedMainThread %d", count++);
+            videoViewHolder.mVisibilityPercents.setText("Video is loading...");
+            videoViewHolder.mVisibilityPercents.setVisibility(View.VISIBLE);
           }
 
           @Override
           public void onVideoCompletionMainThread() {
             videoViewHolder.mCover.setVisibility(View.VISIBLE);
+            videoViewHolder.mVisibilityPercents.setVisibility(View.INVISIBLE);
           }
 
           @Override
@@ -98,13 +99,22 @@ public abstract class BaseVideoItem implements VideoItem, ListItem {
           @Override
           public void onBufferingUpdateMainThread(int percent) {
             Timber.d("----onBufferingUpdateMainThread %d", percent);
+            videoViewHolder.mVisibilityPercents.setText(
+                String.format("Loading %d percent", percent));
           }
 
           @Override
           public void onVideoStoppedMainThread() {
             // Show the cover when video stopped
             videoViewHolder.mCover.setVisibility(View.VISIBLE);
+            videoViewHolder.mVisibilityPercents.setVisibility(View.INVISIBLE);
             Timber.d("----onVideoStoppedMainThread");
+          }
+
+          @Override
+          public void onVideoStartedMainThread() {
+            videoViewHolder.mCover.setVisibility(View.INVISIBLE);
+            videoViewHolder.mVisibilityPercents.setVisibility(View.INVISIBLE);
           }
         });
     return view;
@@ -126,8 +136,8 @@ public abstract class BaseVideoItem implements VideoItem, ListItem {
     currentView.getLocalVisibleRect(mCurrentViewRect);
     if (SHOW_LOGS) {
       Logger.v(TAG, "getVisibilityPercents mCurrentViewRect top " + mCurrentViewRect.top + ", left "
-              + mCurrentViewRect.left + ", bottom " + mCurrentViewRect.bottom + ", right "
-              + mCurrentViewRect.right);
+          + mCurrentViewRect.left + ", bottom " + mCurrentViewRect.bottom + ", right "
+          + mCurrentViewRect.right);
     }
 
     int height = currentView.getHeight();
