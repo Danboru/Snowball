@@ -4,8 +4,8 @@ import android.content.Context;
 import android.support.v4.util.Pair;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.SurfaceView;
 import android.widget.FrameLayout;
-import android.widget.VideoView;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import com.lenguyenthanh.snowball.R;
@@ -17,9 +17,9 @@ public class VideosPlayer extends FrameLayout {
   @Bind(R.id.contentLayout)
   BetterViewAnimator viewAnimator;
   @Bind(R.id.videoView1)
-  VideoView videoView1;
+  SurfaceView videoView1;
   @Bind(R.id.videoView2)
-  VideoView videoView2;
+  SurfaceView videoView2;
 
   private VideosQueue queue;
 
@@ -45,7 +45,6 @@ public class VideosPlayer extends FrameLayout {
     ButterKnife.bind(this);
     queue = new VideosQueue(new Pair<>(videoView1, R.id.videoView1),
         new Pair<>(videoView2, R.id.videoView2), viewAnimator);
-
   }
 
   @Override

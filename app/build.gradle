@@ -90,6 +90,7 @@ dependencies {
   compile project(':data')
   compile project(':list-visibility-utils')
   compile project(':video-player-manager')
+  compile 'com.google.android.exoplayer:exoplayer:r1.5.6'
   // Mvp
   compile libraries.nimble
 
@@ -119,6 +120,9 @@ dependencies {
   // saving view state
   compile libraries.icepick
   apt libraries.icepickCompiler
+
+  // Exo Player
+
 
 //  compile libraries.videoPlayerManager
 //  compile libraries.listVisibilityUtils

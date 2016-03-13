@@ -44,13 +44,14 @@ public class PlayVideoActivity extends Activity {
 
   private void initializeUI() {
     String[] urls = getIntent().getStringArrayExtra(EXTRA_URLS);
-    videosPlayer.setPlayVideoListener(isVideoStarted -> {
-      if(isVideoStarted){
-        progressBar.setVisibility(View.INVISIBLE);
-      }else{
-        progressBar.setVisibility(View.VISIBLE);
-      }
-    });
+    progressBar.setVisibility(View.INVISIBLE);
+    //videosPlayer.setPlayVideoListener(isVideoStarted -> {
+    //  if(isVideoStarted){
+    //    progressBar.setVisibility(View.INVISIBLE);
+    //  }else{
+    //    progressBar.setVisibility(View.VISIBLE);
+    //  }
+    //});
     videosPlayer.setUrls(Arrays.asList(urls));
     videosPlayer.start();
   }
