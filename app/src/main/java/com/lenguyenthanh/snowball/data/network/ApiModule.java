@@ -4,9 +4,9 @@ import android.support.annotation.NonNull;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lenguyenthanh.snowball.BuildConfig;
 import com.lenguyenthanh.snowball.data.feature.video.VideoService;
+import com.lenguyenthanh.snowball.di.qualifier.ApiKey;
 import dagger.Module;
 import dagger.Provides;
-import javax.inject.Named;
 import javax.inject.Singleton;
 import okhttp3.OkHttpClient;
 import retrofit2.Converter;
@@ -21,16 +21,9 @@ public final class ApiModule {
   @Provides
   @Singleton
   @NonNull
-  public ChangeableBaseUrl provideChangeableBaseUrl(@Named("BASE_URL") @NonNull String baseUrl) {
-    return new ChangeableBaseUrl(baseUrl);
-  }
-
-  @Provides
-  @Singleton
-  @NonNull
   public Retrofit provideRetrofit(@NonNull OkHttpClient okHttpClient,
-      @NonNull ChangeableBaseUrl changeableBaseUrl, @NonNull Converter.Factory factory) {
-    return new Retrofit.Builder().baseUrl(changeableBaseUrl)
+      @NonNull @ApiKey String baseUlr, @NonNull Converter.Factory factory) {
+    return new Retrofit.Builder().baseUrl(baseUlr)
         .client(okHttpClient)
         .addConverterFactory(factory)
         .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
