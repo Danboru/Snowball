@@ -2,7 +2,7 @@ package com.lenguyenthanh.snowball.data.network;
 
 import android.support.annotation.NonNull;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.lenguyenthanh.snowball.data.BuildConfig;
+import com.lenguyenthanh.snowball.BuildConfig;
 import com.lenguyenthanh.snowball.data.feature.video.VideoService;
 import dagger.Module;
 import dagger.Provides;

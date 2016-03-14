@@ -1,4 +1,4 @@
-package com.lenguyenthanh.snowball.data.video;
+package com.lenguyenthanh.snowball.data.feature.video;
 
 import android.support.annotation.NonNull;
 import com.lenguyenthanh.snowball.data.entity.VideoEntity;
