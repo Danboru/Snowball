@@ -116,6 +116,14 @@ dependencies {
   compile libraries.picasso
   compile libraries.picassoOkHttpDownloader
 
+  // network
+  compile libraries.okHttp
+  compile libraries.okHttpLoggingInterceptor
+  compile libraries.retrofit
+  compile libraries.retrofitJacksonConverter
+  compile libraries.retrofitRxJavaAdapter
+  compile libraries.jacksonDataBind
+
   // saving view state
   compile libraries.icepick
   apt libraries.icepickCompiler
