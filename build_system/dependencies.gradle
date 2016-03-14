@@ -27,7 +27,7 @@ ext.versions = [
         rxAndroid              : '1.1.0',
         supportLibs            : '23.2.0',
         okHttp                 : '3.2.0',
-        retrofit               : '2.0.0-beta4',
+        retrofit               : '2.0.0',
         jackson                : '2.6.2',
         autoValue              : '1.1',
         butterKnife            : '7.0.1',
@@ -41,6 +41,7 @@ ext.versions = [
         picasso                : '2.5.2',
         picassoOkHttpDownloader: '1.0.2',
         videoPlayerManager     : '0.2.0',
+        exoPlayer              : 'r1.5.6',
 
         junit                  : '4.12',
         assertJ                : '1.7.1',
@@ -85,6 +86,7 @@ ext.libraries = [
 
         videoPlayerManager      : "com.github.danylovolokh:video-player-manager:$versions.videoPlayerManager",
         listVisibilityUtils     : "com.github.danylovolokh:list-visibility-utils:$versions.videoPlayerManager",
+        exoPlayer               : "com.google.android.exoplayer:exoplayer:$versions.exoPlayer",
 
 
         // Developer Tools

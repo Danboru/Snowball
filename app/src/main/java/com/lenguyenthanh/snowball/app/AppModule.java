@@ -3,14 +3,14 @@ package com.lenguyenthanh.snowball.app;
 import android.app.Application;
 import android.support.annotation.NonNull;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.lenguyenthanh.snowball.app.config.Configuration;
-import com.lenguyenthanh.snowball.data.executor.JobExecutor;
 import com.lenguyenthanh.snowball.UIThread;
+import com.lenguyenthanh.snowball.app.config.Configuration;
+import com.lenguyenthanh.snowball.data.di.scope.ApiKey;
+import com.lenguyenthanh.snowball.data.executor.JobExecutor;
 import com.lenguyenthanh.snowball.domain.executor.PostExecutionThread;
 import com.lenguyenthanh.snowball.domain.executor.ThreadExecutor;
 import dagger.Module;
 import dagger.Provides;
-import javax.inject.Named;
 import javax.inject.Singleton;
 
 @Module
@@ -60,8 +60,9 @@ public class AppModule {
   @Provides
   @Singleton
   @NonNull
-  @Named("BASE_URL")
+  @ApiKey
   String provideBaseUrl(Configuration configuration){
     return configuration.getBaseApiUrl();
   }
+
 }
