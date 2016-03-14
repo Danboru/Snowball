@@ -21,6 +21,9 @@ import com.google.android.exoplayer.upstream.DefaultAllocator;
 import com.google.android.exoplayer.upstream.DefaultUriDataSource;
 
 public class VideosQueue {
+  private final static int BUFFER_SEGMENT_SIZE = 64 * 1024;
+  private static final int BUFFER_SEGMENT_COUNT = 256;
+
   private final Pair<SurfaceView, Integer> videoView1;
   private final Pair<SurfaceView, Integer> videoView2;
   private final BetterViewAnimator viewAnimator;
@@ -47,7 +50,7 @@ public class VideosQueue {
   }
 
   public void start() {
-    if(playVideoListener != null){
+    if (playVideoListener != null) {
       playVideoListener.isVideoStarted(false);
     }
     add();
@@ -80,33 +83,30 @@ public class VideosQueue {
 
   private Pair<ExoPlayer, Integer> prepare(final Pair<SurfaceView, Integer> surfaceView,
       final String url) {
-      ExoPlayer exoPlayer = createExoPlayer(url, surfaceView.first);
+    ExoPlayer exoPlayer = createExoPlayer(url, surfaceView.first);
     return new Pair<>(exoPlayer, surfaceView.second);
   }
 
   private ExoPlayer createExoPlayer(final String url, final SurfaceView surfaceView) {
     Timber.d("createExoPlayer %s", url);
-    final int BUFFER_SEGMENT_SIZE = 64 * 1024;
-    final int BUFFER_SEGMENT_COUNT = 256;
 
-    ExtractorSampleSource sampleSource =
-        new ExtractorSampleSource(Uri.parse(url), new DefaultUriDataSource(surfaceView.getContext(), "userAgent"),
-            new DefaultAllocator(BUFFER_SEGMENT_SIZE), BUFFER_SEGMENT_COUNT * BUFFER_SEGMENT_SIZE);
+    ExtractorSampleSource sampleSource = new ExtractorSampleSource(Uri.parse(url),
+        new DefaultUriDataSource(surfaceView.getContext(), "userAgent"),
+        new DefaultAllocator(BUFFER_SEGMENT_SIZE), BUFFER_SEGMENT_COUNT * BUFFER_SEGMENT_SIZE);
     TrackRenderer videoRenderer =
-        new MediaCodecVideoTrackRenderer(surfaceView.getContext(), sampleSource, MediaCodecSelector.DEFAULT,
-            MediaCodec.VIDEO_SCALING_MODE_SCALE_TO_FIT);
+        new MediaCodecVideoTrackRenderer(surfaceView.getContext(), sampleSource,
+            MediaCodecSelector.DEFAULT, MediaCodec.VIDEO_SCALING_MODE_SCALE_TO_FIT);
     TrackRenderer audioRenderer =
         new MediaCodecAudioTrackRenderer(sampleSource, MediaCodecSelector.DEFAULT);
-    TrackRenderer[] rendererArray = { videoRenderer, audioRenderer };
+    TrackRenderer[] rendererArray = {videoRenderer, audioRenderer };
 
     final ExoPlayer exoPlayer = ExoPlayer.Factory.newInstance(rendererArray.length);
-
 
     exoPlayer.addListener(new ExoPlayer.Listener() {
       @Override
       public void onPlayerStateChanged(final boolean playWhenReady, final int playbackState) {
         Timber.d("onPlayerStateChanged %b %d", playWhenReady, playbackState);
-        if(playbackState == ExoPlayer.STATE_ENDED){
+        if (playbackState == ExoPlayer.STATE_ENDED) {
           exoPlayer.stop();
           exoPlayer.seekTo(0);
           add();
@@ -140,13 +140,13 @@ public class VideosQueue {
     if (nextVideoView != null) {
       viewAnimator.setDisplayedChildId(nextVideoView.second);
       nextVideoView.first.setPlayWhenReady(true);
-      if(playVideoListener != null){
+      if (playVideoListener != null) {
         playVideoListener.isVideoStarted(false);
       }
     }
   }
 
-  public interface PlayVideoListener{
+  public interface PlayVideoListener {
     void isVideoStarted(boolean isVideoStarted);
   }
 }

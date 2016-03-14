@@ -1,6 +1,5 @@
 package com.lenguyenthanh.snowball.domain.executor;
 
-import com.lenguyenthanh.snowball.domain.executor.ThreadExecutor;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadFactory;
@@ -34,8 +33,9 @@ public class JobExecutor implements ThreadExecutor {
   public JobExecutor() {
     this.workQueue = new LinkedBlockingQueue<>();
     this.threadFactory = new JobThreadFactory();
-    this.threadPoolExecutor = new ThreadPoolExecutor(INITIAL_POOL_SIZE, MAX_POOL_SIZE,
-        KEEP_ALIVE_TIME, KEEP_ALIVE_TIME_UNIT, this.workQueue, this.threadFactory);
+    this.threadPoolExecutor =
+        new ThreadPoolExecutor(INITIAL_POOL_SIZE, MAX_POOL_SIZE, KEEP_ALIVE_TIME,
+            KEEP_ALIVE_TIME_UNIT, this.workQueue, this.threadFactory);
   }
 
   @Override

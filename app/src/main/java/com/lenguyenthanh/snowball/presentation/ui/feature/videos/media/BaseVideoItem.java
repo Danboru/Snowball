@@ -1,7 +1,6 @@
 package com.lenguyenthanh.snowball.presentation.ui.feature.videos.media;
 
 import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,7 +36,7 @@ public abstract class BaseVideoItem implements VideoItem, ListItem {
    * This method needs to be called when created/recycled view is updated.
    * Call it in
    * 1. {@link android.widget.ListAdapter#getView(int, View, ViewGroup)}
-   * 2. {@link android.support.v7.widget.RecyclerView.Adapter#onBindViewHolder(RecyclerView.ViewHolder,
+   * 2. {@link android.support.v7.widget.RecyclerView.Adapter#,
    * int)}
    */
   public abstract void update(int position, VideoViewHolder view,
@@ -125,7 +124,7 @@ public abstract class BaseVideoItem implements VideoItem, ListItem {
    * This method works correctly when currentView is smaller then it's enclosure.
    *
    * @param currentView - view which visibility should be calculated
-   * @return currentView visibility percents
+   * @return currentView visibility percentsÒ
    */
   @Override
   public int getVisibilityPercents(View currentView) {
