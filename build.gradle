@@ -82,7 +82,6 @@ subprojects {
     reportLevel = 'low' // Report even low priority problems.
 
     classes = files("${project.projectDir}/build/intermediates/classes")
-    classes = files("${project.projectDir}/build/classes")
     source = fileTree('src/main/java')
 
     // If somebody has an idea how to make this work with support libraries -> open a PR please.
