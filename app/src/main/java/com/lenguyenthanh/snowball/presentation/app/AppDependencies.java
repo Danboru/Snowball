@@ -1,7 +1,7 @@
-package com.lenguyenthanh.snowball.app;
+package com.lenguyenthanh.snowball.presentation.app;
 
 import android.app.Application;
-import com.lenguyenthanh.snowball.app.config.Configuration;
+import com.lenguyenthanh.snowball.presentation.app.config.Configuration;
 import com.lenguyenthanh.snowball.data.network.ServiceDependencies;
 import com.lenguyenthanh.snowball.domain.executor.PostExecutionThread;
 import com.lenguyenthanh.snowball.domain.executor.ThreadExecutor;

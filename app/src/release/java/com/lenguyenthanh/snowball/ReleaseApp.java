@@ -1,8 +1,8 @@
 package com.lenguyenthanh.snowball;
 
-import com.lenguyenthanh.snowball.app.AppModule;
-import com.lenguyenthanh.snowball.app.SnowBallApplication;
-import com.lenguyenthanh.snowball.app.config.ReleaseInitializer;
+import com.lenguyenthanh.snowball.presentation.app.AppModule;
+import com.lenguyenthanh.snowball.presentation.app.SnowBallApplication;
+import com.lenguyenthanh.snowball.presentation.app.config.ReleaseInitializer;
 import com.lenguyenthanh.snowball.data.network.ApiModule;
 import com.lenguyenthanh.snowball.data.network.NetworkModule;
 import com.lenguyenthanh.snowball.presentation.ui.UIModule;

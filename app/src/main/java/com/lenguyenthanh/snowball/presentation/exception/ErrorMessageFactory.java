@@ -9,6 +9,7 @@ import javax.inject.Inject;
 
 @ActivityScope
 public class ErrorMessageFactory {
+  // TODO: 3/16/16 https://github.com/android10/Android-CleanArchitecture/issues/71
 
   private final Application application;
 

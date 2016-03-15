@@ -18,7 +18,7 @@ package com.lenguyenthanh.snowball.presentation.ui.base;
 import butterknife.ButterKnife;
 import com.lenguyenthanh.nimble.NimbleView;
 import com.lenguyenthanh.nimble.view.NimbleActivity;
-import com.lenguyenthanh.snowball.app.SnowBallApplication;
+import com.lenguyenthanh.snowball.presentation.app.SnowBallApplication;
 
 public abstract class BaseActivity<V extends NimbleView> extends NimbleActivity<V>
     implements NimbleView {

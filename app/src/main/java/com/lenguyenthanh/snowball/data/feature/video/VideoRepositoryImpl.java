@@ -2,7 +2,7 @@ package com.lenguyenthanh.snowball.data.feature.video;
 
 import com.lenguyenthanh.snowball.data.entity.mapper.VideoEntityDataMapper;
 import com.lenguyenthanh.snowball.domain.Video;
-import com.lenguyenthanh.snowball.domain.video.VideoRepository;
+import com.lenguyenthanh.snowball.domain.feature.video.VideoRepository;
 import java.util.List;
 import javax.inject.Inject;
 import rx.Observable;

@@ -1,9 +1,9 @@
-package com.lenguyenthanh.snowball.app;
+package com.lenguyenthanh.snowball.presentation.app;
 
 import android.app.Application;
 import android.support.annotation.NonNull;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.lenguyenthanh.snowball.app.config.Configuration;
+import com.lenguyenthanh.snowball.presentation.app.config.Configuration;
 import com.lenguyenthanh.snowball.di.qualifier.ApiKey;
 import com.lenguyenthanh.snowball.domain.executor.JobExecutor;
 import com.lenguyenthanh.snowball.domain.executor.PostExecutionThread;

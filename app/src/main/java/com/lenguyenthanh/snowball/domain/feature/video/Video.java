@@ -1,6 +1,7 @@
-package com.lenguyenthanh.snowball.domain;
+package com.lenguyenthanh.snowball.domain.feature.video;
 
 import com.google.auto.value.AutoValue;
+import com.lenguyenthanh.snowball.domain.AutoValue_Video;
 
 @AutoValue
 public abstract class Video {
