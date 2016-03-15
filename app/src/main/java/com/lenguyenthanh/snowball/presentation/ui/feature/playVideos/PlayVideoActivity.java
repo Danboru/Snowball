@@ -15,17 +15,17 @@ import java.util.Arrays;
 
 public class PlayVideoActivity extends Activity {
   private static final String EXTRA_URLS = "EXTRA.URLS";
+
   @Bind(R.id.progressBar)
   ProgressBar progressBar;
+  @Bind(R.id.videosPlayer)
+  VideosPlayer videosPlayer;
 
-  public static void showMe(Activity activity, final String[] urls) {
+  public static void showMe(Activity activity, final String... urls) {
     Intent intent = new Intent(activity, PlayVideoActivity.class);
     intent.putExtra(EXTRA_URLS, urls);
     activity.startActivity(intent);
   }
-
-  @Bind(R.id.videosPlayer)
-  VideosPlayer videosPlayer;
 
   @Override
   protected void onCreate(final Bundle savedInstanceState) {

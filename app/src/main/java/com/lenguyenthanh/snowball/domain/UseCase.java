@@ -13,7 +13,7 @@ public abstract class UseCase {
   private final ThreadExecutor threadExecutor;
   private final PostExecutionThread postExecutionThread;
 
-  private CompositeSubscription subscription = new CompositeSubscription();
+  private final CompositeSubscription subscription = new CompositeSubscription();
 
   protected UseCase(ThreadExecutor threadExecutor, PostExecutionThread postExecutionThread) {
     this.threadExecutor = threadExecutor;

@@ -22,7 +22,7 @@ public class RepositoryErrorBundle implements ErrorBundle {
   public String getErrorMessage() {
     String message = "";
     if (this.exception != null) {
-      this.exception.getMessage();
+      message = this.exception.getMessage();
     }
     return message;
   }

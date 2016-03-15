@@ -13,6 +13,7 @@ public class VideoModelDataMapper {
 
   @Inject
   public VideoModelDataMapper() {
+    // For DI
   }
 
   public VideoModel transform(Video video) {

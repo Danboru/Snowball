@@ -4,6 +4,7 @@ import android.media.MediaCodec;
 import android.net.Uri;
 import android.support.v4.util.Pair;
 import android.view.SurfaceView;
+import com.lenguyenthanh.snowball.domain.common.Lists;
 import com.lenguyenthanh.snowball.presentation.ui.widget.BetterViewAnimator;
 import java.util.ArrayDeque;
 import java.util.LinkedList;
@@ -28,8 +29,8 @@ public class VideosQueue {
   private final Pair<SurfaceView, Integer> videoView2;
   private final BetterViewAnimator viewAnimator;
 
-  private Queue<String> urls;
-  private Queue<Pair<ExoPlayer, Integer>> videoViewsQueue;
+  private final Queue<String> urls;
+  private final Queue<Pair<ExoPlayer, Integer>> videoViewsQueue;
 
   private PlayVideoListener playVideoListener;
 
@@ -37,15 +38,13 @@ public class VideosQueue {
     this.playVideoListener = playVideoListener;
   }
 
-  public void setUrls(final List<String> urls) {
-    this.urls = new LinkedList<>(urls);
-  }
-
   public VideosQueue(final Pair<SurfaceView, Integer> videoView1,
-      final Pair<SurfaceView, Integer> videoView2, final BetterViewAnimator viewAnimator) {
+      final Pair<SurfaceView, Integer> videoView2, final BetterViewAnimator viewAnimator,
+      final List<String> urls) {
     this.videoView1 = videoView1;
     this.videoView2 = videoView2;
     this.viewAnimator = viewAnimator;
+    this.urls = new LinkedList<>(urls);;
     this.videoViewsQueue = new ArrayDeque<>(2);
   }
 
@@ -58,8 +57,7 @@ public class VideosQueue {
   }
 
   private void add() {
-    Timber.d("add() %d", urls.size());
-    if (urls.size() != 0) {
+    if (!Lists.isEmptyOrNull(urls)) {
       add(urls.remove());
     }
   }
@@ -72,12 +70,12 @@ public class VideosQueue {
 
   private Pair<SurfaceView, Integer> getUnusedVideoView() {
     Pair<ExoPlayer, Integer> videoView = videoViewsQueue.peek();
-    //if (videoView == null) {
-    //  return videoView1;
-    //}
-    //if (videoView.second.intValue() == videoView1.second.intValue()) {
-    //  return videoView2;
-    //}
+    if (videoView == null) {
+      return videoView1;
+    }
+    if (videoView.second.intValue() == videoView2.second.intValue()) {
+      return videoView1;
+    }
     return videoView1;
   }
 
@@ -124,7 +122,7 @@ public class VideosQueue {
 
       @Override
       public void onPlayerError(final ExoPlaybackException error) {
-
+        // TODO: 3/15/16 throw exception
       }
     });
     exoPlayer.prepare(rendererArray);

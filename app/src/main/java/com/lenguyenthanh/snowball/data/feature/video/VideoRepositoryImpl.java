@@ -8,11 +8,11 @@ import javax.inject.Inject;
 import rx.Observable;
 
 public class VideoRepositoryImpl implements VideoRepository {
-  private final com.lenguyenthanh.snowball.data.feature.video.VideoService videoService;
+  private final VideoService videoService;
   private final VideoEntityDataMapper videoEntityDataMapper;
 
   @Inject
-  public VideoRepositoryImpl(final com.lenguyenthanh.snowball.data.feature.video.VideoService videoService,
+  public VideoRepositoryImpl(final VideoService videoService,
       final VideoEntityDataMapper videoEntityDataMapper) {
     this.videoService = videoService;
     this.videoEntityDataMapper = videoEntityDataMapper;

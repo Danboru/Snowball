@@ -11,14 +11,10 @@ import com.volokh.danylo.video_player_manager.manager.VideoPlayerManager;
 import com.volokh.danylo.video_player_manager.meta.CurrentItemMetaData;
 import com.volokh.danylo.video_player_manager.meta.MetaData;
 import com.volokh.danylo.video_player_manager.ui.MediaPlayerWrapper;
-import com.volokh.danylo.video_player_manager.utils.Logger;
 import com.volokh.danylo.visibility_utils.items.ListItem;
 import timber.log.Timber;
 
 public abstract class BaseVideoItem implements VideoItem, ListItem {
-
-  private static final boolean SHOW_LOGS = false;
-  private static final String TAG = BaseVideoItem.class.getSimpleName();
 
   /**
    * An object that is filled with values when {@link #getVisibilityPercents} method is called.
@@ -70,52 +66,7 @@ public abstract class BaseVideoItem implements VideoItem, ListItem {
     view.setTag(videoViewHolder);
 
     videoViewHolder.mPlayer.addMediaPlayerListener(
-        new MediaPlayerWrapper.MainThreadMediaPlayerListener() {
-          int count = 0;
-
-          @Override
-          public void onVideoSizeChangedMainThread(int width, int height) {
-            Timber.d("----onVideoSizeChangedMainThread %d %d", width, height);
-          }
-
-          @Override
-          public void onVideoPreparedMainThread() {
-            videoViewHolder.mVisibilityPercents.setText("Video is loading...");
-            videoViewHolder.mVisibilityPercents.setVisibility(View.VISIBLE);
-          }
-
-          @Override
-          public void onVideoCompletionMainThread() {
-            videoViewHolder.mCover.setVisibility(View.VISIBLE);
-            videoViewHolder.mVisibilityPercents.setVisibility(View.INVISIBLE);
-          }
-
-          @Override
-          public void onErrorMainThread(int what, int extra) {
-            Timber.d("----onErrorMainThread %d %d", what, extra);
-          }
-
-          @Override
-          public void onBufferingUpdateMainThread(int percent) {
-            Timber.d("----onBufferingUpdateMainThread %d", percent);
-            videoViewHolder.mVisibilityPercents.setText(
-                String.format("Loading %d percent", percent));
-          }
-
-          @Override
-          public void onVideoStoppedMainThread() {
-            // Show the cover when video stopped
-            videoViewHolder.mCover.setVisibility(View.VISIBLE);
-            videoViewHolder.mVisibilityPercents.setVisibility(View.INVISIBLE);
-            Timber.d("----onVideoStoppedMainThread");
-          }
-
-          @Override
-          public void onVideoStartedMainThread() {
-            videoViewHolder.mCover.setVisibility(View.INVISIBLE);
-            videoViewHolder.mVisibilityPercents.setVisibility(View.INVISIBLE);
-          }
-        });
+        new MyMainThreadMediaPlayerListener(videoViewHolder));
     return view;
   }
 
@@ -128,19 +79,16 @@ public abstract class BaseVideoItem implements VideoItem, ListItem {
    */
   @Override
   public int getVisibilityPercents(View currentView) {
-    if (SHOW_LOGS) Logger.v(TAG, ">> getVisibilityPercents currentView " + currentView);
+    Timber.d(">> getVisibilityPercents currentView %s", currentView);
 
     int percents = 100;
 
     currentView.getLocalVisibleRect(mCurrentViewRect);
-    if (SHOW_LOGS) {
-      Logger.v(TAG, "getVisibilityPercents mCurrentViewRect top " + mCurrentViewRect.top + ", left "
-          + mCurrentViewRect.left + ", bottom " + mCurrentViewRect.bottom + ", right "
-          + mCurrentViewRect.right);
-    }
+    Timber.d(
+        "getVisibilityPercents mCurrentViewRect top %d, left %d, bottom %d, right %d", mCurrentViewRect.top, mCurrentViewRect.left, mCurrentViewRect.bottom, mCurrentViewRect.right);
 
     int height = currentView.getHeight();
-    if (SHOW_LOGS) Logger.v(TAG, "getVisibilityPercents height " + height);
+    Timber.d("getVisibilityPercents height %d", height);
 
     if (viewIsPartiallyHiddenTop()) {
       // view is partially hidden behind the top edge
@@ -150,7 +98,7 @@ public abstract class BaseVideoItem implements VideoItem, ListItem {
     }
 
     //setVisibilityPercentsText(currentView, percents);
-    if (SHOW_LOGS) Logger.v(TAG, "<< getVisibilityPercents, percents " + percents);
+    Timber.d("<< getVisibilityPercents, percents %d", percents);
 
     return percents;
   }
@@ -161,5 +109,58 @@ public abstract class BaseVideoItem implements VideoItem, ListItem {
 
   private boolean viewIsPartiallyHiddenTop() {
     return mCurrentViewRect.top > 0;
+  }
+
+  private static class MyMainThreadMediaPlayerListener
+      implements MediaPlayerWrapper.MainThreadMediaPlayerListener {
+
+    private final VideoViewHolder videoViewHolder;
+
+    public MyMainThreadMediaPlayerListener(final VideoViewHolder videoViewHolder) {
+      this.videoViewHolder = videoViewHolder;
+    }
+
+    @Override
+    public void onVideoSizeChangedMainThread(int width, int height) {
+      Timber.d("----onVideoSizeChangedMainThread %d %d", width, height);
+    }
+
+    @Override
+    public void onVideoPreparedMainThread() {
+      videoViewHolder.mVisibilityPercents.setText(R.string.video_is_loading);
+      videoViewHolder.mVisibilityPercents.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void onVideoCompletionMainThread() {
+      videoViewHolder.mCover.setVisibility(View.VISIBLE);
+      videoViewHolder.mVisibilityPercents.setVisibility(View.INVISIBLE);
+    }
+
+    @Override
+    public void onErrorMainThread(int what, int extra) {
+      Timber.d("----onErrorMainThread %d %d", what, extra);
+    }
+
+    @Override
+    public void onBufferingUpdateMainThread(int percent) {
+      Timber.d("----onBufferingUpdateMainThread %d", percent);
+      videoViewHolder.mVisibilityPercents.setText(
+          String.format("Loading %d percent", percent));
+    }
+
+    @Override
+    public void onVideoStoppedMainThread() {
+      // Show the cover when video stopped
+      videoViewHolder.mCover.setVisibility(View.VISIBLE);
+      videoViewHolder.mVisibilityPercents.setVisibility(View.INVISIBLE);
+      Timber.d("----onVideoStoppedMainThread");
+    }
+
+    @Override
+    public void onVideoStartedMainThread() {
+      videoViewHolder.mCover.setVisibility(View.INVISIBLE);
+      videoViewHolder.mVisibilityPercents.setVisibility(View.INVISIBLE);
+    }
   }
 }

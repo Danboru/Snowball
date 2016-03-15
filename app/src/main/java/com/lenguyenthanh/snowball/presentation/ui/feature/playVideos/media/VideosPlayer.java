@@ -32,7 +32,8 @@ public class VideosPlayer extends FrameLayout {
   }
 
   public void setUrls(final List<String> urls) {
-    queue.setUrls(urls);
+    queue = new VideosQueue(new Pair<>(videoView1, R.id.videoView1),
+        new Pair<>(videoView2, R.id.videoView2), viewAnimator, urls);
   }
 
   public VideosPlayer(final Context context, final AttributeSet attrs) {
@@ -43,8 +44,6 @@ public class VideosPlayer extends FrameLayout {
   private void initialize() {
     LayoutInflater.from(getContext()).inflate(R.layout.view_video_player, this);
     ButterKnife.bind(this);
-    queue = new VideosQueue(new Pair<>(videoView1, R.id.videoView1),
-        new Pair<>(videoView2, R.id.videoView2), viewAnimator);
   }
 
   @Override

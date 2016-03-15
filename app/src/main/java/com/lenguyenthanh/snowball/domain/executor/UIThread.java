@@ -29,6 +29,7 @@ public class UIThread implements PostExecutionThread {
 
   @Inject
   public UIThread() {
+    // to be injection
   }
 
   @Override

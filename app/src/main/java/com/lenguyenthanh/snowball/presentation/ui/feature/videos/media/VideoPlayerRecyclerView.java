@@ -29,11 +29,6 @@ public class VideoPlayerRecyclerView extends RecyclerView {
   private ListItemsVisibilityCalculator mVideoVisibilityCalculator;
   private final List<BaseVideoItem> videoItems = new ArrayList<>();
   private VideoRecyclerViewAdapter videoRecyclerViewAdapter;
-  private OnItemClickListener onItemClickListener;
-
-  public void setOnItemClickListener(final OnItemClickListener onItemClickListener) {
-    this.onItemClickListener = onItemClickListener;
-  }
 
   @Inject
   NetworkBitmapClient bitmapClient;
@@ -124,10 +119,5 @@ public class VideoPlayerRecyclerView extends RecyclerView {
 
   public void onStop() {
     mVideoPlayerManager.resetMediaPlayer();
-  }
-
-
-  public interface OnItemClickListener {
-    void onItemClick();
   }
 }

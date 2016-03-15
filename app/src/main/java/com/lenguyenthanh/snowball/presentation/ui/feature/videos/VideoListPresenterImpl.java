@@ -92,7 +92,9 @@ public class VideoListPresenterImpl extends SaveStatePresenter<VideoListView>
 
     @Override
     public void onError(Throwable e) {
-      VideoListPresenterImpl.this.showErrorMessage(new DefaultErrorBundle((Exception) e));
+      if(e instanceof Exception) {
+        VideoListPresenterImpl.this.showErrorMessage(new DefaultErrorBundle((Exception) e));
+      }
       getView().showRetry();
     }
 
@@ -111,7 +113,9 @@ public class VideoListPresenterImpl extends SaveStatePresenter<VideoListView>
 
     @Override
     public void onError(Throwable e) {
-      VideoListPresenterImpl.this.showErrorMessage(new DefaultErrorBundle((Exception) e));
+      if(e instanceof Exception) {
+        VideoListPresenterImpl.this.showErrorMessage(new DefaultErrorBundle((Exception) e));
+      }
       getView().hideRefresh();
     }
 

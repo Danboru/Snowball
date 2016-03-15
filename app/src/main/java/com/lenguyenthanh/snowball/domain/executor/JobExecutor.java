@@ -1,5 +1,6 @@
 package com.lenguyenthanh.snowball.domain.executor;
 
+import android.support.annotation.NonNull;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadFactory;
@@ -23,26 +24,29 @@ public class JobExecutor implements ThreadExecutor {
   // Sets the Time Unit to seconds
   private static final TimeUnit KEEP_ALIVE_TIME_UNIT = TimeUnit.SECONDS;
 
-  private final BlockingQueue<Runnable> workQueue;
-
   private final ThreadPoolExecutor threadPoolExecutor;
-
-  private final ThreadFactory threadFactory;
 
   @Inject
   public JobExecutor() {
-    this.workQueue = new LinkedBlockingQueue<>();
-    this.threadFactory = new JobThreadFactory();
+    final BlockingQueue<Runnable> workQueue = new LinkedBlockingQueue<>();
+    final ThreadLocal<ThreadFactory> threadFactory = createThreadLocalFactory();
     this.threadPoolExecutor =
         new ThreadPoolExecutor(INITIAL_POOL_SIZE, MAX_POOL_SIZE, KEEP_ALIVE_TIME,
-            KEEP_ALIVE_TIME_UNIT, this.workQueue, this.threadFactory);
+            KEEP_ALIVE_TIME_UNIT, workQueue, threadFactory.get());
+  }
+
+  @NonNull
+  private ThreadLocal<ThreadFactory> createThreadLocalFactory() {
+    return new ThreadLocal<ThreadFactory>() {
+      @Override
+      protected ThreadFactory initialValue() {
+        return new JobThreadFactory();
+      }
+    };
   }
 
   @Override
-  public void execute(Runnable runnable) {
-    if (runnable == null) {
-      throw new IllegalArgumentException("Runnable to execute cannot be null");
-    }
+  public void execute(@NonNull Runnable runnable) {
     this.threadPoolExecutor.execute(runnable);
   }
 
@@ -51,7 +55,7 @@ public class JobExecutor implements ThreadExecutor {
     private int counter = 0;
 
     @Override
-    public Thread newThread(Runnable runnable) {
+    public Thread newThread(@NonNull Runnable runnable) {
       return new Thread(runnable, THREAD_NAME + counter++);
     }
   }

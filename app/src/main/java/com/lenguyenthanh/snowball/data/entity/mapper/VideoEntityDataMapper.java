@@ -14,6 +14,7 @@ public class VideoEntityDataMapper {
 
   @Inject
   public VideoEntityDataMapper() {
+    // use for Injection
   }
 
   public Video transform(VideoEntity videoEntity) {
