@@ -1,7 +1,7 @@
 package com.lenguyenthanh.snowball.presentation.model;
 
-import com.lenguyenthanh.snowball.di.scope.ActivityScope;
-import com.lenguyenthanh.snowball.domain.common.Lists;
+import com.lenguyenthanh.snowball.util.di.scope.ActivityScope;
+import com.lenguyenthanh.snowball.util.common.Lists;
 import com.lenguyenthanh.snowball.domain.feature.video.Video;
 import java.util.ArrayList;
 import java.util.Collection;

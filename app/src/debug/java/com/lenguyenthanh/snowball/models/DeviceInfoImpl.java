@@ -3,7 +3,7 @@ package com.lenguyenthanh.snowball.models;
 import android.content.Context;
 import android.os.Build;
 import android.util.DisplayMetrics;
-import com.lenguyenthanh.snowball.domain.common.Strings;
+import com.lenguyenthanh.snowball.util.common.Strings;
 
 public class DeviceInfoImpl implements DeviceInfo {
 

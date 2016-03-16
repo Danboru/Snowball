@@ -2,7 +2,7 @@ package com.lenguyenthanh.snowball.presentation.ui.feature.videos;
 
 import android.app.Activity;
 import com.lenguyenthanh.snowball.data.feature.video.VideoRepositoryImpl;
-import com.lenguyenthanh.snowball.di.scope.ActivityScope;
+import com.lenguyenthanh.snowball.util.di.scope.ActivityScope;
 import com.lenguyenthanh.snowball.domain.UseCase;
 import com.lenguyenthanh.snowball.domain.feature.video.GetVideoList;
 import com.lenguyenthanh.snowball.domain.feature.video.VideoRepository;

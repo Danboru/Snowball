@@ -2,7 +2,7 @@ package com.lenguyenthanh.snowball.presentation.ui.feature.videos;
 
 import com.lenguyenthanh.snowball.domain.DefaultSubscriber;
 import com.lenguyenthanh.snowball.domain.UseCase;
-import com.lenguyenthanh.snowball.domain.common.Lists;
+import com.lenguyenthanh.snowball.util.common.Lists;
 import com.lenguyenthanh.snowball.domain.exception.DefaultErrorBundle;
 import com.lenguyenthanh.snowball.domain.exception.ErrorBundle;
 import com.lenguyenthanh.snowball.domain.feature.video.Video;

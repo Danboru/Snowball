@@ -1,7 +1,7 @@
 package com.lenguyenthanh.snowball.data.entity.mapper;
 
 import com.lenguyenthanh.snowball.data.entity.VideoEntity;
-import com.lenguyenthanh.snowball.domain.common.Lists;
+import com.lenguyenthanh.snowball.util.common.Lists;
 import com.lenguyenthanh.snowball.domain.feature.video.Video;
 import java.util.ArrayList;
 import java.util.Collection;

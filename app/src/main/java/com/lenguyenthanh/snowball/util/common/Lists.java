@@ -1,4 +1,4 @@
-package com.lenguyenthanh.snowball.domain.common;
+package com.lenguyenthanh.snowball.util.common;
 
 import java.util.ArrayList;
 import java.util.Collection;

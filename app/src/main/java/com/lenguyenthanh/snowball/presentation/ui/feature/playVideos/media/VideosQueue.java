@@ -4,7 +4,7 @@ import android.media.MediaCodec;
 import android.net.Uri;
 import android.support.v4.util.Pair;
 import android.view.SurfaceView;
-import com.lenguyenthanh.snowball.domain.common.Lists;
+import com.lenguyenthanh.snowball.util.common.Lists;
 import com.lenguyenthanh.snowball.presentation.ui.widget.BetterViewAnimator;
 import java.util.ArrayDeque;
 import java.util.LinkedList;

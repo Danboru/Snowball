@@ -1,4 +1,4 @@
-package com.lenguyenthanh.snowball.domain.common;
+package com.lenguyenthanh.snowball.util.common;
 
 public final class Objects {
 

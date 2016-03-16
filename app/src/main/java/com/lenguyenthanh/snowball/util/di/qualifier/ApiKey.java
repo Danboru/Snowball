@@ -1,4 +1,4 @@
-package com.lenguyenthanh.snowball.di.qualifier;
+package com.lenguyenthanh.snowball.util.di.qualifier;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

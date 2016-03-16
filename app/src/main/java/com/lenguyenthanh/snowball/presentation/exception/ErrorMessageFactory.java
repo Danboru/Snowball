@@ -3,7 +3,7 @@ package com.lenguyenthanh.snowball.presentation.exception;
 import android.app.Application;
 import com.lenguyenthanh.snowball.R;
 import com.lenguyenthanh.snowball.data.exception.NetworkConnectionException;
-import com.lenguyenthanh.snowball.di.scope.ActivityScope;
+import com.lenguyenthanh.snowball.util.di.scope.ActivityScope;
 import java.net.UnknownHostException;
 import javax.inject.Inject;
 

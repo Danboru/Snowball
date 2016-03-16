@@ -1,4 +1,4 @@
-package com.lenguyenthanh.snowball.di.scope;
+package com.lenguyenthanh.snowball.util.di.scope;
 
 import javax.inject.Scope;
 
