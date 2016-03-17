@@ -1,6 +1,6 @@
 package com.lenguyenthanh.snowball.presentation.model;
 
-import com.lenguyenthanh.snowball.domain.Video;
+import com.lenguyenthanh.snowball.domain.feature.video.Video;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;

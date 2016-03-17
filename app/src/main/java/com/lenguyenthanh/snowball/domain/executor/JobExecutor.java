@@ -37,12 +37,7 @@ public class JobExecutor implements ThreadExecutor {
 
   @NonNull
   private ThreadLocal<ThreadFactory> createThreadLocalFactory() {
-    return new ThreadLocal<ThreadFactory>() {
-      @Override
-      protected ThreadFactory initialValue() {
-        return new JobThreadFactory();
-      }
-    };
+    return new ThreadLocalFactory();
   }
 
   @Override
@@ -50,7 +45,14 @@ public class JobExecutor implements ThreadExecutor {
     this.threadPoolExecutor.execute(runnable);
   }
 
-  private static class JobThreadFactory implements ThreadFactory {
+  private static final class ThreadLocalFactory extends ThreadLocal<ThreadFactory> {
+    @Override
+    protected ThreadFactory initialValue() {
+      return new JobThreadFactory();
+    }
+  }
+
+  private static final class JobThreadFactory implements ThreadFactory {
     private static final String THREAD_NAME = "android_";
     private int counter = 0;
 

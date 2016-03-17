@@ -84,8 +84,9 @@ public abstract class BaseVideoItem implements VideoItem, ListItem {
     int percents = 100;
 
     currentView.getLocalVisibleRect(mCurrentViewRect);
-    Timber.d(
-        "getVisibilityPercents mCurrentViewRect top %d, left %d, bottom %d, right %d", mCurrentViewRect.top, mCurrentViewRect.left, mCurrentViewRect.bottom, mCurrentViewRect.right);
+    Timber.d("getVisibilityPercents mCurrentViewRect top %d, left %d, bottom %d, right %d",
+        mCurrentViewRect.top, mCurrentViewRect.left, mCurrentViewRect.bottom,
+        mCurrentViewRect.right);
 
     int height = currentView.getHeight();
     Timber.d("getVisibilityPercents height %d", height);
@@ -145,8 +146,7 @@ public abstract class BaseVideoItem implements VideoItem, ListItem {
     @Override
     public void onBufferingUpdateMainThread(int percent) {
       Timber.d("----onBufferingUpdateMainThread %d", percent);
-      videoViewHolder.mVisibilityPercents.setText(
-          String.format("Loading %d percent", percent));
+      videoViewHolder.mVisibilityPercents.setText(String.format("Loading %d percent", percent));
     }
 
     @Override

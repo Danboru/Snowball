@@ -1,5 +1,6 @@
 package com.lenguyenthanh.snowball.domain;
 
+import com.lenguyenthanh.snowball.domain.feature.video.Video;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;

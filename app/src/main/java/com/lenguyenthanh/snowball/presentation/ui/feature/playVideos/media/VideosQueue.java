@@ -44,7 +44,7 @@ public class VideosQueue {
     this.videoView1 = videoView1;
     this.videoView2 = videoView2;
     this.viewAnimator = viewAnimator;
-    this.urls = new LinkedList<>(urls);;
+    this.urls = new LinkedList<>(urls);
     this.videoViewsQueue = new ArrayDeque<>(2);
   }
 
