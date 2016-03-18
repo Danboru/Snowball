@@ -1,8 +1,9 @@
-package com.lenguyenthanh.snowball.presentation.app.config;
+package com.lenguyenthanh.snowball.app.config;
 
 import android.support.annotation.NonNull;
 import com.lenguyenthanh.snowball.data.network.OkHttpInterceptors;
 import com.lenguyenthanh.snowball.data.network.OkHttpNetworkInterceptors;
+import com.lenguyenthanh.snowball.util.di.qualifier.ApiKey;
 import dagger.Module;
 import dagger.Provides;
 import java.util.List;
@@ -45,5 +46,20 @@ public class SupportModule {
   @Singleton @NonNull
   public List<Interceptor> provideOkHttpNetworkInterceptors() {
     return emptyList();
+  }
+
+  @Provides
+  @Singleton
+  @NonNull
+  Configuration provideConfiguration() {
+    return new Configuration.SimpleConfiguration();
+  }
+
+  @Provides
+  @Singleton
+  @NonNull
+  @ApiKey
+  String provideBaseUrl(Configuration configuration){
+    return configuration.getBaseApiUrl();
   }
 }

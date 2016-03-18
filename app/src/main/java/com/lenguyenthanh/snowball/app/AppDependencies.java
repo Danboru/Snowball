@@ -1,11 +1,12 @@
-package com.lenguyenthanh.snowball.presentation.app;
+package com.lenguyenthanh.snowball.app;
 
 import android.app.Application;
-import com.lenguyenthanh.snowball.presentation.app.config.Configuration;
+import com.lenguyenthanh.snowball.app.config.Configuration;
 import com.lenguyenthanh.snowball.data.network.ServiceDependencies;
 import com.lenguyenthanh.snowball.domain.executor.PostExecutionThread;
 import com.lenguyenthanh.snowball.domain.executor.ThreadExecutor;
 import com.lenguyenthanh.snowball.presentation.ui.UIDependencies;
+import com.lenguyenthanh.snowball.util.di.qualifier.ApiKey;
 
 public interface AppDependencies extends ServiceDependencies, UIDependencies {
   Application application();
@@ -15,4 +16,7 @@ public interface AppDependencies extends ServiceDependencies, UIDependencies {
   PostExecutionThread postExecutionThread();
 
   Configuration configuration();
+
+  @ApiKey
+  String apiKey();
 }

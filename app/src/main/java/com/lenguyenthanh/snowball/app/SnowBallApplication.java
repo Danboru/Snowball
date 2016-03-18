@@ -1,10 +1,10 @@
-package com.lenguyenthanh.snowball.presentation.app;
+package com.lenguyenthanh.snowball.app;
 
 import android.app.Application;
 import android.content.Context;
-import com.lenguyenthanh.snowball.presentation.app.config.Initializer;
-import com.lenguyenthanh.snowball.presentation.app.config.MainInitializer;
-import com.lenguyenthanh.snowball.presentation.app.config.SupportModule;
+import com.lenguyenthanh.snowball.app.config.Initializer;
+import com.lenguyenthanh.snowball.app.config.MainInitializer;
+import com.lenguyenthanh.snowball.app.config.SupportModule;
 import com.lenguyenthanh.snowball.data.network.NetworkModule;
 import com.lenguyenthanh.snowball.data.network.ApiModule;
 import com.lenguyenthanh.snowball.presentation.ui.UIModule;

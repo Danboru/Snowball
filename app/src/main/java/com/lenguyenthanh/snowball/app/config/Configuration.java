@@ -1,4 +1,4 @@
-package com.lenguyenthanh.snowball.presentation.app.config;
+package com.lenguyenthanh.snowball.app.config;
 
 public interface Configuration {
   String getBaseApiUrl();

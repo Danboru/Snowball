@@ -55,6 +55,24 @@ android {
     exclude 'META-INF/services/javax.annotation.processing.Processor'
   }
 
+  sourceSets {
+
+    // Unit tests live in src/unitTest.
+    test.java.srcDir 'src/test/java'
+
+    // Integration tests live in src/integrationTest.
+    test.java.srcDir 'src/integrationTests/java'
+
+    // Unit tests for debug build type specific code live in src/debugUnitTest.
+    testDebug.java.srcDir 'src/debugUnitTests/java'
+
+    // Unit tests for release build type specific code live in src/releaseUnitTest.
+    testRelease.java.srcDir 'src/releaseUnitTests/java'
+
+    // Functional tests live in src/functionalTests.
+    androidTest.java.srcDir 'src/functionalTests/java'
+  }
+
   lintOptions {
     warningsAsErrors true
     abortOnError true // Fail early.
@@ -145,6 +163,7 @@ dependencies {
   testCompile libraries.equalsVerifier
   testCompile libraries.okHttpMockWebServer
   testCompile libraries.mockitoCore
+  testCompile 'com.github.fabioCollini:DaggerMock:0.5'
 
 
   androidTestCompile libraries.supportTestRunner

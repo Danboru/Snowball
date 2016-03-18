@@ -7,7 +7,7 @@ import android.support.v7.widget.Toolbar;
 import butterknife.Bind;
 import butterknife.OnClick;
 import com.lenguyenthanh.snowball.R;
-import com.lenguyenthanh.snowball.presentation.app.SnowBallApplication;
+import com.lenguyenthanh.snowball.app.SnowBallApplication;
 import com.lenguyenthanh.snowball.presentation.model.VideoModel;
 import com.lenguyenthanh.snowball.presentation.ui.base.BaseActivity;
 import com.lenguyenthanh.snowball.presentation.ui.feature.videos.media.VideoPlayerRecyclerView;

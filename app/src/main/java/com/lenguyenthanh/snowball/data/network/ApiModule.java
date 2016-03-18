@@ -3,8 +3,8 @@ package com.lenguyenthanh.snowball.data.network;
 import android.support.annotation.NonNull;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lenguyenthanh.snowball.BuildConfig;
+import com.lenguyenthanh.snowball.app.config.Configuration;
 import com.lenguyenthanh.snowball.data.feature.video.VideoService;
-import com.lenguyenthanh.snowball.util.di.qualifier.ApiKey;
 import dagger.Module;
 import dagger.Provides;
 import javax.inject.Singleton;
@@ -22,8 +22,8 @@ public final class ApiModule {
   @Singleton
   @NonNull
   public Retrofit provideRetrofit(@NonNull OkHttpClient okHttpClient,
-      @NonNull @ApiKey String baseUlr, @NonNull Converter.Factory factory) {
-    return new Retrofit.Builder().baseUrl(baseUlr)
+      @NonNull Configuration configuration, @NonNull Converter.Factory factory) {
+    return new Retrofit.Builder().baseUrl(configuration.getBaseApiUrl())
         .client(okHttpClient)
         .addConverterFactory(factory)
         .addCallAdapterFactory(RxJavaCallAdapterFactory.create())

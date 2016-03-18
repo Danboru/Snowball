@@ -2,7 +2,7 @@ package com.lenguyenthanh.snowball;
 
 import android.app.Activity;
 import android.os.Bundle;
-import com.lenguyenthanh.snowball.presentation.app.config.ActivityHierarchyServer;
+import com.lenguyenthanh.snowball.app.config.ActivityHierarchyServer;
 import com.lenguyenthanh.snowball.models.MemoryLeakProxy;
 import javax.inject.Inject;
 import timber.log.Timber;

@@ -12,7 +12,7 @@
     android:theme="@style/AppTheme"
     android:fullBackupContent="true"
     android:allowBackup="true"
-    android:name=".presentation.app.SnowBallApplication"
+    android:name=".app.SnowBallApplication"
     >
     <activity
       android:name=".presentation.ui.feature.videos.VideoListActivity"
