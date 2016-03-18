@@ -6,7 +6,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(IntegrationRobolectricTestRunner.class)
-public class ItemTest {
+public class VideoTest {
 
   // Why test JSON serialization/deserialization?
   // 1. Update JSON libraries without worrying about breaking changes.

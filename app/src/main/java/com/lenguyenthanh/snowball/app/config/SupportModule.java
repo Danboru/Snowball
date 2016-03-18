@@ -3,7 +3,6 @@ package com.lenguyenthanh.snowball.app.config;
 import android.support.annotation.NonNull;
 import com.lenguyenthanh.snowball.data.network.OkHttpInterceptors;
 import com.lenguyenthanh.snowball.data.network.OkHttpNetworkInterceptors;
-import com.lenguyenthanh.snowball.util.di.qualifier.ApiKey;
 import dagger.Module;
 import dagger.Provides;
 import java.util.List;
@@ -18,21 +17,21 @@ public class SupportModule {
   @Provides
   @Singleton
   @NonNull
-  ActivityHierarchyServer provideActivityHierarchyServer() {
+  public ActivityHierarchyServer provideActivityHierarchyServer() {
     return ActivityHierarchyServer.NONE;
   }
 
   @Provides
   @Singleton
   @NonNull
-  Timber.Tree provideTimber() {
+  public Timber.Tree provideTimber() {
     return new Timber.DebugTree();
   }
 
   @Provides
   @Singleton
   @NonNull
-  Initializer provideInitializer(MainInitializer initializer) {
+  public Initializer provideInitializer(MainInitializer initializer) {
     return initializer;
   }
 
@@ -51,15 +50,8 @@ public class SupportModule {
   @Provides
   @Singleton
   @NonNull
-  Configuration provideConfiguration() {
+  public Configuration provideConfiguration() {
     return new Configuration.SimpleConfiguration();
   }
 
-  @Provides
-  @Singleton
-  @NonNull
-  @ApiKey
-  String provideBaseUrl(Configuration configuration){
-    return configuration.getBaseApiUrl();
-  }
 }
