@@ -163,7 +163,7 @@ dependencies {
   testCompile libraries.equalsVerifier
   testCompile libraries.okHttpMockWebServer
   testCompile libraries.mockitoCore
-  testCompile 'com.github.fabioCollini:DaggerMock:0.5'
+  testCompile libraries.daggerMock
 
 
   androidTestCompile libraries.supportTestRunner

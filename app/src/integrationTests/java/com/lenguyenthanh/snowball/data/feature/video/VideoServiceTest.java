@@ -30,7 +30,8 @@ public class VideoServiceTest {
       + "  }\n" + "]";
 
   @Rule
-  public MockServerRule mockServerRule = (MockServerRule)new MockServerRule().set((appComponent) -> restApi = appComponent.videoService());
+  public MockServerRule mockServerRule = (MockServerRule) new MockServerRule().set(
+      (appComponent) -> restApi = appComponent.videoService());
 
   VideoService restApi;
 
@@ -51,8 +52,8 @@ public class VideoServiceTest {
   @Test
   public void items_shouldThrowExceptionIfWebServerRespondError() {
     for (Integer errorCode : HttpCodes.clientAndServerSideErrorCodes()) {
-      mockServerRule.getMockWebServer().enqueue(
-          new MockResponse().setStatus("HTTP/1.1 " + errorCode + " Not today"));
+      mockServerRule.getMockWebServer()
+          .enqueue(new MockResponse().setStatus("HTTP/1.1 " + errorCode + " Not today"));
       try {
         List<VideoEntity> videoEntities = restApi.videos().toBlocking().first();
         fail("HttpException should be thrown for error code: " + errorCode);
