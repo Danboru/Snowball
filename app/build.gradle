@@ -104,8 +104,6 @@ android {
 }
 
 dependencies {
-  compile project(':list-visibility-utils')
-  compile project(':video-player-manager')
   // Mvp
   compile libraries.nimble
 
@@ -144,11 +142,6 @@ dependencies {
   compile libraries.icepick
   apt libraries.icepickCompiler
 
-  // Exo Player
-  compile libraries.exoPlayer
-
-//  compile libraries.videoPlayerManager
-//  compile libraries.listVisibilityUtils
 
   // debug tools
   debugCompile libraries.okHttpLoggingInterceptor

@@ -36,9 +36,6 @@
           />
       </intent-filter>
     </activity>
-    <activity android:name=".presentation.ui.feature.playVideos.PlayVideoActivity"
-      android:screenOrientation="portrait"
-      />
   </application>
 
 </manifest>

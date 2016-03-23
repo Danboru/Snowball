@@ -32,7 +32,7 @@
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       >
-      <com.lenguyenthanh.snowball.presentation.ui.feature.videos.media.VideoPlayerRecyclerView
+      <android.support.v7.widget.RecyclerView
         android:id="@+id/listVideo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
