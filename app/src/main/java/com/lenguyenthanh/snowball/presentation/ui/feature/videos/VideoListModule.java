@@ -44,7 +44,7 @@ public class VideoListModule extends ActivityModule {
 
   @Provides
   @ActivityScope
-  NavigationCommand provideNavigationCommand(Activity activity){
-    return new PlayVideoNavigationCommand(activity);
+  NavigationCommand provideNavigationCommand() {
+    return new NoWhereCommand();
   }
 }

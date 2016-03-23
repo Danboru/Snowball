@@ -57,21 +57,7 @@ public class VideoListPresenterImpl extends SaveStatePresenter<VideoListView>
 
   @Override
   public void playVideo() {
-    ((PlayVideoNavigationCommand) navigationCommand).setUrls(getUrls());
     navigationCommand.navigate();
-  }
-
-  private String[] getUrls() {
-    if (Lists.isEmptyOrNull(videoModels)) {
-      return new String[0];
-    }
-
-    String[] urls = new String[videoModels.size()];
-    int i = 0;
-    for (VideoModel video : videoModels) {
-      urls[i++] = video.url();
-    }
-    return urls;
   }
 
   private void getVideoList(Subscriber<List<Video>> subscriber) {

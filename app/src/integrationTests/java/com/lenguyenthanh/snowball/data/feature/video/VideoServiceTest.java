@@ -18,15 +18,18 @@ public class VideoServiceTest {
   private final String response = "[\n" + "  {\n" + "    \"id\": \"1\",\n"
       + "    \"url\": \"http://media.snowballnow.com/video/upload/v1451206914/lcgbutfkqbkhvrfdurrp.mp4\",\n"
       + "    \"title\": \"Motobike\",\n"
-      + "    \"thumbnail\": \"https://www.evernote.com/shard/s159/sh/d2345890-5698-48bb-91e8-bcf763e86d2b/d1b288341ff44254/res/a7c7b1d0-8a81-4c64-b5cc-5e3dad73bf45/skitch.jpg?resizeSmall&width=832\"\n"
+      + "    \"thumbnail\": \"https://www.evernote.com/shard/s159/sh/d2345890-5698-48bb-91e8-bcf763e"
+      + "86d2b/d1b288341ff44254/res/a7c7b1d0-8a81-4c64-b5cc-5e3dad73bf45/skitch.jpg?resizeSmall&width=832\"\n"
       + "  },\n" + "  {\n" + "    \"id\": \"2\",\n"
       + "    \"url\": \"http://media.snowballnow.com/video/upload/v1450752299/deff3bxsmpsrow4i40e0.mp4\",\n"
       + "    \"title\": \"Beryl\",\n"
-      + "    \"thumbnail\": \"https://www.evernote.com/shard/s159/sh/870e4057-fc67-432f-8616-8b24e3e1c5c9/8c4144b2f727dc7c/res/a4dd159c-6a26-4404-aad3-724a891fe432/skitch.jpg?resizeSmall&width=832\"\n"
+      + "    \"thumbnail\": \"https://www.evernote.com/shard/s159/sh/870e4057-fc67-432f-8616-8b24e3e1"
+      + "c5c9/8c4144b2f727dc7c/res/a4dd159c-6a26-4404-aad3-724a891fe432/skitch.jpg?resizeSmall&width=832\"\n"
       + "  },\n" + "  {\n" + "    \"id\": \"3\",\n"
       + "    \"url\": \"http://media.snowballnow.com/video/upload/v1450787135/poareeehaxfqhcyavnnl.mp4\",\n"
       + "    \"title\": \"Ideal\",\n"
-      + "    \"thumbnail\": \"https://www.evernote.com/shard/s159/sh/b2794124-2578-41c3-9be6-82500dca1bbe/e65286fe8884e73d/res/0db48c73-216b-40b3-9eb3-596271c276a7/skitch.jpg?resizeSmall&width=832\"\n"
+      + "    \"thumbnail\": \"https://www.evernote.com/shard/s159/sh/b2794124-2578-41c3-9be6-82500dca"
+      + "1bbe/e65286fe8884e73d/res/0db48c73-216b-40b3-9eb3-596271c276a7/skitch.jpg?resizeSmall&width=832\"\n"
       + "  }\n" + "]";
 
   @Rule

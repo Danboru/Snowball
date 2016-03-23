@@ -2,6 +2,4 @@
   <string name="app_name">Snowball</string>
   <string name="btn_text_retry">Retry</string>
   <string name="network_error_message">Network is not available. Please check your network again!</string>
-  <string name="video_cover">Video cover</string>
-  <string name="video_is_loading">Video is loading…</string>
 </resources>

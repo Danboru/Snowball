@@ -3,6 +3,7 @@ package com.lenguyenthanh.snowball.presentation.ui.feature.videos;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -10,7 +11,6 @@ import com.lenguyenthanh.snowball.R;
 import com.lenguyenthanh.snowball.app.SnowBallApplication;
 import com.lenguyenthanh.snowball.presentation.model.VideoModel;
 import com.lenguyenthanh.snowball.presentation.ui.base.BaseActivity;
-import com.lenguyenthanh.snowball.presentation.ui.feature.videos.media.VideoPlayerRecyclerView;
 import com.lenguyenthanh.snowball.presentation.ui.network.Tracker;
 import com.lenguyenthanh.snowball.presentation.ui.widget.BetterViewAnimator;
 import com.lenguyenthanh.snowball.presentation.ui.widget.ItemClickSupport;
@@ -26,11 +26,9 @@ public class VideoListActivity extends BaseActivity<VideoListView> implements Vi
   @Bind(R.id.toolbar)
   Toolbar toolbar;
 
-  private VideoListComponent component;
-
   // View widget
   @Bind(R.id.listVideo)
-  VideoPlayerRecyclerView listVideo;
+  RecyclerView listVideo;
   @Bind(R.id.swipeLayout)
   SwipeRefreshLayout swipeLayout;
   @Bind(R.id.contentLayout)
@@ -52,7 +50,6 @@ public class VideoListActivity extends BaseActivity<VideoListView> implements Vi
 
   private void initializeUI() {
     swipeLayout.setOnRefreshListener(() -> presenter().doRefresh());
-    listVideo.initialize(component);
     ItemClickSupport.addTo(listVideo)
         .setOnItemClickListener((recyclerView, position, v) -> presenter.playVideo());
     toolbar.setTitle(getString(R.string.app_name));
@@ -60,11 +57,11 @@ public class VideoListActivity extends BaseActivity<VideoListView> implements Vi
 
   @Override
   protected void buildComponent(SnowBallApplication.AppComponent appComponent) {
-    component = DaggerVideoListComponent.builder()
+    DaggerVideoListComponent.builder()
         .videoListModule(new VideoListModule(this))
         .appComponent(appComponent)
-        .build();
-    component.inject(this);
+        .build()
+        .inject(this);
   }
 
   @Override
@@ -106,22 +103,6 @@ public class VideoListActivity extends BaseActivity<VideoListView> implements Vi
   @Override
   public void renderVideoList(final Collection<VideoModel> userModelCollection) {
     showContent();
-    listVideo.setVideoItems(userModelCollection);
-  }
-
-  @Override
-  protected void onResume() {
-    super.onResume();
-    if (listVideo != null) {
-      listVideo.onResume();
-    }
-  }
-
-  @Override
-  protected void onStop() {
-    super.onStop();
-    if (listVideo != null) {
-      listVideo.onStop();
-    }
+    //listVideo.setVideoItems(userModelCollection);
   }
 }
