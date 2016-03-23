@@ -30,6 +30,7 @@ public class DebugInitializer extends MainInitializer {
     super.initialize();
     memoryLeakProxy.init();
     initializeStetho();
+    Timber.d("Paper : %s %s", paperwork.get("gitSha"), paperwork.get("buildDate"));
   }
 
   private void initializeStetho() {

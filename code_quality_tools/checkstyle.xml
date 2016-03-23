@@ -35,7 +35,7 @@
         <module name="IllegalInstantiation" />
         <module name="RedundantThrows" />
         <module name="HideUtilityClassConstructor" />
-        <module name="InterfaceIsType" />
+        <!--<module name="InterfaceIsType" />-->
         <module name="ArrayTypeStyle" />
     </module>
 </module>

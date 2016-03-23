@@ -3,12 +3,14 @@ package com.lenguyenthanh.snowball;
 import android.app.Application;
 import android.support.annotation.NonNull;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
+import com.lenguyenthanh.snowball.app.config.Configuration;
 import com.lenguyenthanh.snowball.app.config.Initializer;
 import com.lenguyenthanh.snowball.app.config.ActivityHierarchyServer;
 import com.lenguyenthanh.snowball.data.network.OkHttpInterceptors;
 import com.lenguyenthanh.snowball.data.network.OkHttpNetworkInterceptors;
 import com.lenguyenthanh.snowball.models.MemoryLeakProxy;
 import com.lenguyenthanh.snowball.models.MemoryLeakProxyImp;
+import com.lenguyenthanh.snowball.util.di.qualifier.ApiKey;
 import dagger.Module;
 import dagger.Provides;
 import hu.supercluster.paperwork.Paperwork;
@@ -85,5 +87,20 @@ public class DebugModule {
   @NonNull
   public List<Interceptor> provideOkHttpNetworkInterceptors() {
     return singletonList(new StethoInterceptor());
+  }
+
+  @Provides
+  @Singleton
+  @NonNull
+  Configuration provideConfiguration() {
+    return new Configuration.SimpleConfiguration();
+  }
+
+  @Provides
+  @Singleton
+  @NonNull
+  @ApiKey
+  String provideBaseUrl(Configuration configuration){
+    return configuration.getBaseApiUrl();
   }
 }

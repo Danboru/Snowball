@@ -5,7 +5,7 @@ import com.lenguyenthanh.snowball.app.SnowBallApplication;
 import com.lenguyenthanh.snowball.app.config.ReleaseInitializer;
 import com.lenguyenthanh.snowball.data.network.ApiModule;
 import com.lenguyenthanh.snowball.data.network.NetworkModule;
-import com.lenguyenthanh.snowball.ui.UIModule;
+import com.lenguyenthanh.snowball.presentation.ui.UIModule;
 import dagger.Component;
 import javax.inject.Singleton;
 

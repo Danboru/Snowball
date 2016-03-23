@@ -37,6 +37,7 @@ allprojects {
   repositories {
     jcenter()
     maven {url "https://clojars.org/repo/"}
+    maven { url "https://jitpack.io" }
   }
   apply plugin: 'checkstyle'
   checkstyle {
@@ -82,7 +83,6 @@ ext.preDexLibs = !project.hasProperty('disablePreDex')
 //    reportLevel = 'low' // Report even low priority problems.
 //
 //    classes = files("${project.projectDir}/build/intermediates/classes")
-//    classes = files("${project.projectDir}/build/classes")
 //    source = fileTree('src/main/java')
 //
 //    // If somebody has an idea how to make this work with support libraries -> open a PR please.

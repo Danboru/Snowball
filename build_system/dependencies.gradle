@@ -1,6 +1,6 @@
 ext.app =  [
   androidBuildToolsVersion : "23.0.2",
-  androidMinSdkVersion : 15,
+  androidMinSdkVersion : 16,
   androidTargetSdkVersion : 23,
   androidCompileSdkVersion : 23,
 
@@ -49,6 +49,7 @@ ext.versions = [
         mockito                : '1.10.19',
         supportTestRunner      : '0.4.1',
         robolectric            : '3.0',
+        daggerMock             : '0.5'
 ]
 
 ext.libraries = [
@@ -107,4 +108,5 @@ ext.libraries = [
         espressoCore            : "com.android.support.test.espresso:espresso-core:$versions.espresso",
         espressoContrib         : "com.android.support.test.espresso:espresso-contrib:$versions.espresso",
         robolectric             : "org.robolectric:robolectric:$versions.robolectric",
+        daggerMock              : "com.github.fabioCollini:DaggerMock:$versions.daggerMock",
 ]

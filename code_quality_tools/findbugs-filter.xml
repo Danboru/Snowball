@@ -1,29 +1,34 @@
 <FindBugsFilter>
 
-    <!-- Do not check auto-generated resources classes -->
-    <Match>
-        <Class name="~.*R\$.*"/>
-    </Match>
+  <!-- Do not check auto-generated resources classes -->
+  <Match>
+    <Class name="~.*R\$.*"/>
+  </Match>
 
-    <!-- Do not check auto-generated manifest classes -->
-    <Match>
-        <Class name="~.*Manifest\$.*"/>
-    </Match>
+  <!-- Do not check auto-generated manifest classes -->
+  <Match>
+    <Class name="~.*Manifest\$.*"/>
+  </Match>
 
-    <!-- Do not check auto-generated classes (Dagger puts $ into class names) -->
-    <Match>
-        <Class name="~.*Dagger*.*"/>
-    </Match>
+  <!-- Do not check auto-generated classes (Dagger puts $ into class names) -->
+  <Match>
+    <Class name="~.*Dagger*.*"/>
+  </Match>
 
-    <!-- Do not check for non-initialized fields in tests because usually we initialize them in @Before -->
-    <Match>
-        <Class name="~.*Test"/>
-    </Match>
+  <!-- Do not check for non-initialized fields in tests because usually we initialize them in @Before -->
+  <Match>
+    <Class name="~.*Test"/>
+  </Match>
 
-    <!-- Do not check for non-initialized fields in activities because usually we initialize View Widgets by ButterKnife -->
-    <Match>
-        <Bug pattern="UWF_FIELD_NOT_INITIALIZED_IN_CONSTRUCTOR" type="UWF_FIELD_NOT_INITIALIZED_IN_CONSTRUCTOR"/>
-        <Class name="~.*Activity"/>
-    </Match>
+  <!-- Do not check for non-initialized fields in activities because usually we initialize View Widgets by ButterKnife -->
+  <Match>
+    <Bug pattern="UWF_FIELD_NOT_INITIALIZED_IN_CONSTRUCTOR"
+      type="UWF_FIELD_NOT_INITIALIZED_IN_CONSTRUCTOR"/>
+    <Class name="~.*Activity"/>
+  </Match>
 
+  <!-- Ignore false 'uncalled private method' warning in FindBugs for Java 8-->
+  <Match methodregex=".*lambda.*">
+    <BugPattern name="UPM_UNCALLED_PRIVATE_METHOD"/>
+  </Match>
 </FindBugsFilter>

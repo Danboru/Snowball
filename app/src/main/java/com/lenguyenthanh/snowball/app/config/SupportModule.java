@@ -17,21 +17,21 @@ public class SupportModule {
   @Provides
   @Singleton
   @NonNull
-  ActivityHierarchyServer provideActivityHierarchyServer() {
+  public ActivityHierarchyServer provideActivityHierarchyServer() {
     return ActivityHierarchyServer.NONE;
   }
 
   @Provides
   @Singleton
   @NonNull
-  Timber.Tree provideTimber() {
+  public Timber.Tree provideTimber() {
     return new Timber.DebugTree();
   }
 
   @Provides
   @Singleton
   @NonNull
-  Initializer provideInitializer(MainInitializer initializer) {
+  public Initializer provideInitializer(MainInitializer initializer) {
     return initializer;
   }
 
@@ -46,4 +46,12 @@ public class SupportModule {
   public List<Interceptor> provideOkHttpNetworkInterceptors() {
     return emptyList();
   }
+
+  @Provides
+  @Singleton
+  @NonNull
+  public Configuration provideConfiguration() {
+    return new Configuration.SimpleConfiguration();
+  }
+
 }

@@ -1,1 +1,1 @@
-include ':app', ':data', ':domain', ':list-visibility-utils', 'video-player-manager'
+include ':app', ':list-visibility-utils', 'video-player-manager'

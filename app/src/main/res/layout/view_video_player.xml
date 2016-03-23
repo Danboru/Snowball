@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.lenguyenthanh.snowball.ui.widget.BetterViewAnimator
+<com.lenguyenthanh.snowball.presentation.ui.widget.BetterViewAnimator
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:id="@+id/contentLayout"
   android:orientation="vertical"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   android:layout_gravity="center"
-  android:background="@android:color/black"
   >
   <SurfaceView
     android:id="@+id/videoView1"
@@ -22,4 +21,4 @@
     />
 
 
-</com.lenguyenthanh.snowball.ui.widget.BetterViewAnimator>
+</com.lenguyenthanh.snowball.presentation.ui.widget.BetterViewAnimator>
