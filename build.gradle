@@ -48,6 +48,8 @@ task clean(type: Delete) {
 ext.preDexLibs = !project.hasProperty('disablePreDex')
 
 subprojects {
+  apply from: '../code_quality_tools/quality.gradle'
+
   project.plugins.whenPluginAdded { plugin ->
     if ('com.android.build.gradle.AppPlugin'.equals(plugin.class.name) ||
         'com.android.build.gradle.LibraryPlugin'.equals(plugin.class.name)) {
@@ -55,8 +57,6 @@ subprojects {
       project.android.dexOptions.preDexLibraries = rootProject.ext.preDexLibs
     }
   }
-
-  apply from: '../code_quality_tools/quality.gradle'
 
   afterEvaluate {
     tasks.findByName('pmd').dependsOn('assemble')
