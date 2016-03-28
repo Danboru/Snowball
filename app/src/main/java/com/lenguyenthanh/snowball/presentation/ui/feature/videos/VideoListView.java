@@ -2,7 +2,7 @@ package com.lenguyenthanh.snowball.presentation.ui.feature.videos;
 
 import com.lenguyenthanh.nimble.NimbleView;
 import com.lenguyenthanh.snowball.presentation.model.VideoModel;
-import java.util.Collection;
+import java.util.List;
 
 public interface VideoListView extends NimbleView {
 
@@ -14,5 +14,5 @@ public interface VideoListView extends NimbleView {
 
   void hideRefresh();
 
-  void renderVideoList(Collection<VideoModel> userModelCollection);
+  void renderVideoList(List<VideoModel> userModelCollection);
 }
