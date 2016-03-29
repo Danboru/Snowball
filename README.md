@@ -19,15 +19,15 @@ It is a sample application which is desired as a showcase for how a clean Androi
 - Other practices
 
 ### Architecture
-I follow [Clean Architecture](http://blog.8thlight.com/uncle-bob/2012/08/13/the-clean-architecture.html) in this project. I separate project into 3 layers (3 modules):
+I follow [Clean Architecture](http://blog.8thlight.com/uncle-bob/2012/08/13/the-clean-architecture.html) in this project. I structure the project into 3 layers (3 packages):
 
-##### App module
+##### Presentation package
 This is presentation layer, its responsibility is to present data model into view which user interact with. 
 
-##### Domain module
-This is business layer, we can look at this module and understand what application does. This module is Java module and it dependent with Android Framework.
+##### Domain package
+This is business layer, we can look at this package and understand what application does. This module is Java module and it dependent with Android Framework.
 
-##### Data module
+##### Data package
 This is data layer, its responsibility is loading data and caching data. All data comes from here. Other layers do not to care about where data is come from, they just ask Data layer to get data.
 
 ##### Layer rules:
