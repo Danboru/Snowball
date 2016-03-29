@@ -38,7 +38,7 @@ This sample uses dependency inject(DI) ([Dagger 2](http://google.github.io/dagge
 This project uses reactive programming([RxJava](https://github.com/ReactiveX/RxJava)) for async job as well as app flow.
 
 ### Model-View-Presenter(MVP)
-This project uses my small library [Nimble](https://github.com/lenguyenthanh/nimble) as an MVP library. You can read more about MVP here: [MVP best practices](https://github.com/lenguyenthanh/nimble/wiki/MVP).
+This project uses my small library [Nimble](https://github.com/lenguyenthanh/nimble) as an MVP library. You can read more about MVP here: [MVP best practices](http://lenguyenthanh.com/model-view-presentermvp-definitions-and-best-practices/).
 
 ### Other practices
 I tried hard to follow [SOLID](https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)) in this project. It makes the application easier to maintain, test, and change. When using external dependencies (libraries), I prefer to write a wrapper interface for them, and hide all their implementations from my application. For example: [Image caching library wrapper](https://github.com/lenguyenthanh/Snowball/blob/master/app%2Fsrc%2Fmain%2Fjava%2Fcom%2Flenguyenthanh%2Fsnowball%2Fui%2Fnetwork%2FNetworkBitmapClient.java) or [Fake analytics tool library](https://github.com/lenguyenthanh/Snowball/blob/master/app%2Fsrc%2Fmain%2Fjava%2Fcom%2Flenguyenthanh%2Fsnowball%2Fui%2Fnetwork%2FTracker.java). 
