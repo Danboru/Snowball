@@ -2,7 +2,6 @@ package com.lenguyenthanh.snowball.presentation.ui.feature.videos;
 
 import com.lenguyenthanh.snowball.domain.DefaultSubscriber;
 import com.lenguyenthanh.snowball.domain.UseCase;
-import com.lenguyenthanh.snowball.util.common.Lists;
 import com.lenguyenthanh.snowball.domain.exception.DefaultErrorBundle;
 import com.lenguyenthanh.snowball.domain.exception.ErrorBundle;
 import com.lenguyenthanh.snowball.domain.feature.video.Video;
@@ -11,7 +10,7 @@ import com.lenguyenthanh.snowball.presentation.model.VideoModel;
 import com.lenguyenthanh.snowball.presentation.model.VideoModelDataMapper;
 import com.lenguyenthanh.snowball.presentation.ui.base.SaveStatePresenter;
 import com.lenguyenthanh.snowball.presentation.util.ui.NavigationCommand;
-import java.util.Collection;
+import com.lenguyenthanh.snowball.util.common.Lists;
 import java.util.List;
 import javax.inject.Inject;
 import rx.Subscriber;
@@ -24,7 +23,7 @@ public class VideoListPresenterImpl extends SaveStatePresenter<VideoListView>
   private final ErrorMessageFactory errorMessageFactory;
   private final NavigationCommand navigationCommand;
 
-  private Collection<VideoModel> videoModels;
+  private List<VideoModel> videoModels;
 
   @Inject
   public VideoListPresenterImpl(final UseCase getVideoList, final VideoModelDataMapper videoModelMapper,
@@ -69,7 +68,7 @@ public class VideoListPresenterImpl extends SaveStatePresenter<VideoListView>
     getView().showError(errorMessage);
   }
 
-  private void showVideoCollectionInView(Collection<Video> usersCollection) {
+  private void showVideoCollectionInView(List<Video> usersCollection) {
     videoModels = this.videoModelMapper.transform(usersCollection);
     getView().renderVideoList(videoModels);
   }

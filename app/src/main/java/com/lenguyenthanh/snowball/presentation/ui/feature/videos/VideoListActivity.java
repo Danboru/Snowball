@@ -3,6 +3,7 @@ package com.lenguyenthanh.snowball.presentation.ui.feature.videos;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import butterknife.Bind;
@@ -11,11 +12,15 @@ import com.lenguyenthanh.snowball.R;
 import com.lenguyenthanh.snowball.app.SnowBallApplication;
 import com.lenguyenthanh.snowball.presentation.model.VideoModel;
 import com.lenguyenthanh.snowball.presentation.ui.base.BaseActivity;
+import com.lenguyenthanh.snowball.presentation.ui.feature.videos.adapter.ItemsAdapter;
 import com.lenguyenthanh.snowball.presentation.ui.network.Tracker;
 import com.lenguyenthanh.snowball.presentation.ui.widget.BetterViewAnimator;
 import com.lenguyenthanh.snowball.presentation.ui.widget.ItemClickSupport;
-import java.util.Collection;
+import com.lenguyenthanh.snowball.presentation.ui.widget.VerticalSpaceItemDecoration;
+import java.util.List;
 import javax.inject.Inject;
+
+import static android.support.v7.widget.LinearLayoutManager.VERTICAL;
 
 public class VideoListActivity extends BaseActivity<VideoListView> implements VideoListView {
 
@@ -33,6 +38,9 @@ public class VideoListActivity extends BaseActivity<VideoListView> implements Vi
   SwipeRefreshLayout swipeLayout;
   @Bind(R.id.contentLayout)
   BetterViewAnimator contentLayout;
+
+  @Inject
+  ItemsAdapter itemsAdapter;
 
   @OnClick(R.id.btRetry)
   void onBtRetryClicked() {
@@ -53,6 +61,10 @@ public class VideoListActivity extends BaseActivity<VideoListView> implements Vi
     ItemClickSupport.addTo(listVideo)
         .setOnItemClickListener((recyclerView, position, v) -> presenter.playVideo());
     toolbar.setTitle(getString(R.string.app_name));
+    listVideo.setLayoutManager(new LinearLayoutManager(this, VERTICAL, false));
+    listVideo.addItemDecoration(new VerticalSpaceItemDecoration(
+        (int) getResources().getDimension(R.dimen.list_item_vertical_space_between_items)));
+    listVideo.setAdapter(itemsAdapter);
   }
 
   @Override
@@ -101,8 +113,8 @@ public class VideoListActivity extends BaseActivity<VideoListView> implements Vi
   }
 
   @Override
-  public void renderVideoList(final Collection<VideoModel> userModelCollection) {
+  public void renderVideoList(final List<VideoModel> userModelCollection) {
     showContent();
-    //listVideo.setVideoItems(userModelCollection);
+    itemsAdapter.setData(userModelCollection);
   }
 }

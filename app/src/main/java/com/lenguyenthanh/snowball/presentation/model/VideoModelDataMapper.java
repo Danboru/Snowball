@@ -1,11 +1,11 @@
 package com.lenguyenthanh.snowball.presentation.model;
 
-import com.lenguyenthanh.snowball.util.di.scope.ActivityScope;
-import com.lenguyenthanh.snowball.util.common.Lists;
 import com.lenguyenthanh.snowball.domain.feature.video.Video;
+import com.lenguyenthanh.snowball.util.common.Lists;
+import com.lenguyenthanh.snowball.util.di.scope.ActivityScope;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 import javax.inject.Inject;
 
 @ActivityScope
@@ -28,11 +28,11 @@ public class VideoModelDataMapper {
         .build();
   }
 
-  public Collection<VideoModel> transform(Collection<Video> videoCollection) {
+  public List<VideoModel> transform(List<Video> videoCollection) {
     if (Lists.isEmptyOrNull(videoCollection)) {
       return Collections.emptyList();
     }
-    Collection<VideoModel> result = new ArrayList<>(videoCollection.size());
+    List<VideoModel> result = new ArrayList<>(videoCollection.size());
     for (Video video : videoCollection) {
       result.add(transform(video));
     }
