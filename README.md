@@ -1,13 +1,15 @@
-# Snowball
-Snowball Sample application
+# Snowball [![Build Status](https://travis-ci.org/lenguyenthanh/Snowball.svg?branch=master)](https://travis-ci.org/lenguyenthanh/Snowball) [![codecov.io](https://codecov.io/github/lenguyenthanh/Snowball/coverage.svg?branch=master)](https://codecov.io/github/lenguyenthanh/Snowball?branch=master)
+It is a sample application which is desired as a showcase for how a clean Android Project should. It's still small and simple and need a lot of help to make it better. Please help me build it better and better. Cheers!
+
+## Documents
 - Application functionality
 - Application architecture design
-- How to build
 - Conclusion
 
 ## Application functionality
 - Download list of items from rest api: [API](https://gist.githubusercontent.com/lenguyenthanh/5bb3bbd3404bb118bfc1/raw/91809efb7abbc43870465cb594cdfd0bce67bb26/videos).
 - Displays items as a list.
+- Display images from item
 
 ## Application architecture design
 - General Architecture
