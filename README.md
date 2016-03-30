@@ -1,7 +1,10 @@
 # Snowball [![Build Status](https://travis-ci.org/lenguyenthanh/Snowball.svg?branch=master)](https://travis-ci.org/lenguyenthanh/Snowball) [![codecov.io](https://codecov.io/github/lenguyenthanh/Snowball/coverage.svg?branch=master)](https://codecov.io/github/lenguyenthanh/Snowball?branch=master)
 It is a sample application which is desired as a showcase for how a clean Android Project should. It's still small and simple and need a lot of help to make it better. Please help me build it better and better. Cheers!
 
-## Documents
+## Objectives
+Biggest goal of this project is create a good sample Android project which has good architecture and quality. It is heavy inspired of two great projects [Android Clean Architecture](https://github.com/android10/Android-CleanArchitecture) and [Quality Matters](https://github.com/artem-zinnatullin/qualitymatters). Kudos [Fernando Cejas](https://twitter.com/fernando_cejas) and [Artem Zinnatullin](https://twitter.com/artem_zin) for their great jobs.
+
+## Outline
 - Application functionality
 - Application architecture design
 - Conclusion
