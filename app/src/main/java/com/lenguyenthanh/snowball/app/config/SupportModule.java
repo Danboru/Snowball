@@ -12,46 +12,30 @@ import timber.log.Timber;
 
 import static java.util.Collections.emptyList;
 
-@Module
-public class SupportModule {
-  @Provides
-  @Singleton
-  @NonNull
-  public ActivityHierarchyServer provideActivityHierarchyServer() {
+@Module public class SupportModule {
+  @Provides @Singleton @NonNull public ActivityHierarchyServer provideActivityHierarchyServer() {
     return ActivityHierarchyServer.NONE;
   }
 
-  @Provides
-  @Singleton
-  @NonNull
-  public Timber.Tree provideTimber() {
+  @Provides @Singleton @NonNull public Timber.Tree provideTimber() {
     return new Timber.DebugTree();
   }
 
-  @Provides
-  @Singleton
-  @NonNull
-  public Initializer provideInitializer(MainInitializer initializer) {
+  @Provides @Singleton @NonNull public Initializer provideInitializer(MainInitializer initializer) {
     return initializer;
   }
 
-  @Provides @OkHttpInterceptors
-  @Singleton @NonNull
+  @Provides @OkHttpInterceptors @Singleton @NonNull
   public List<Interceptor> provideOkHttpInterceptors() {
     return emptyList();
   }
 
-  @Provides @OkHttpNetworkInterceptors
-  @Singleton @NonNull
+  @Provides @OkHttpNetworkInterceptors @Singleton @NonNull
   public List<Interceptor> provideOkHttpNetworkInterceptors() {
     return emptyList();
   }
 
-  @Provides
-  @Singleton
-  @NonNull
-  public Configuration provideConfiguration() {
+  @Provides @Singleton @NonNull public Configuration provideConfiguration() {
     return new Configuration.SimpleConfiguration();
   }
-
 }

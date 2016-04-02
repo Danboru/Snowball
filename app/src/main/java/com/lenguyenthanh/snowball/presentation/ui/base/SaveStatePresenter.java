@@ -22,13 +22,11 @@ import icepick.Icepick;
 
 public abstract class SaveStatePresenter<View extends NimbleView> extends BasePresenter<View> {
 
-  @Override
-  public void onCreate(Bundle savedInstanceState) {
+  @Override public void onCreate(Bundle savedInstanceState) {
     Icepick.restoreInstanceState(this, savedInstanceState);
   }
 
-  @Override
-  public void onSave(final Bundle outState) {
+  @Override public void onSave(final Bundle outState) {
     Icepick.saveInstanceState(this, outState);
   }
 }

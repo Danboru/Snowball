@@ -12,8 +12,7 @@ import javax.inject.Singleton;
 /**
  * Decorated {@link ThreadPoolExecutor}
  */
-@Singleton
-public class JobExecutor implements ThreadExecutor {
+@Singleton public class JobExecutor implements ThreadExecutor {
 
   private static final int INITIAL_POOL_SIZE = 3;
   private static final int MAX_POOL_SIZE = 5;
@@ -26,8 +25,7 @@ public class JobExecutor implements ThreadExecutor {
 
   private final ThreadPoolExecutor threadPoolExecutor;
 
-  @Inject
-  public JobExecutor() {
+  @Inject public JobExecutor() {
     final BlockingQueue<Runnable> workQueue = new LinkedBlockingQueue<>();
     final ThreadLocal<ThreadFactory> threadFactory = createThreadLocalFactory();
     this.threadPoolExecutor =
@@ -35,19 +33,16 @@ public class JobExecutor implements ThreadExecutor {
             KEEP_ALIVE_TIME_UNIT, workQueue, threadFactory.get());
   }
 
-  @NonNull
-  private ThreadLocal<ThreadFactory> createThreadLocalFactory() {
+  @NonNull private ThreadLocal<ThreadFactory> createThreadLocalFactory() {
     return new ThreadLocalFactory();
   }
 
-  @Override
-  public void execute(@NonNull Runnable runnable) {
+  @Override public void execute(@NonNull Runnable runnable) {
     this.threadPoolExecutor.execute(runnable);
   }
 
   private static final class ThreadLocalFactory extends ThreadLocal<ThreadFactory> {
-    @Override
-    protected ThreadFactory initialValue() {
+    @Override protected ThreadFactory initialValue() {
       return new JobThreadFactory();
     }
   }
@@ -56,8 +51,7 @@ public class JobExecutor implements ThreadExecutor {
     private static final String THREAD_NAME = "android_";
     private int counter = 0;
 
-    @Override
-    public Thread newThread(@NonNull Runnable runnable) {
+    @Override public Thread newThread(@NonNull Runnable runnable) {
       return new Thread(runnable, THREAD_NAME + counter++);
     }
   }

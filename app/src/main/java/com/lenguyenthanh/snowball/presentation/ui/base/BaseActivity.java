@@ -23,20 +23,17 @@ import com.lenguyenthanh.snowball.app.SnowBallApplication;
 public abstract class BaseActivity<V extends NimbleView> extends NimbleActivity<V>
     implements NimbleView {
 
-  @Override
-  public void onContentChanged() {
+  @Override public void onContentChanged() {
     super.onContentChanged();
     ButterKnife.bind(this);
   }
 
-  @Override
-  protected void onDestroy() {
+  @Override protected void onDestroy() {
     ButterKnife.unbind(this);
     super.onDestroy();
   }
 
-  @Override
-  protected void initialize() {
+  @Override protected void initialize() {
     super.initialize();
     setupActivityComponent();
   }

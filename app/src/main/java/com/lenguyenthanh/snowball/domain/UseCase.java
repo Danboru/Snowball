@@ -31,8 +31,7 @@ public abstract class UseCase {
    * @param useCaseSubscriber The guy who will be listen to the observable build
    * with {@link #buildUseCaseObservable()}.
    */
-  @SuppressWarnings("unchecked")
-  public void execute(Subscriber useCaseSubscriber) {
+  @SuppressWarnings("unchecked") public void execute(Subscriber useCaseSubscriber) {
     Subscription sub = this.buildUseCaseObservable()
         .subscribeOn(Schedulers.from(threadExecutor))
         .observeOn(postExecutionThread.getScheduler())

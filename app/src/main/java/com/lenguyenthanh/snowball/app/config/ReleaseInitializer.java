@@ -7,13 +7,11 @@ public class ReleaseInitializer implements Initializer {
 
   private final Timber.Tree logTree;
 
-  @Inject
-  public ReleaseInitializer(final Timber.Tree logTree) {
+  @Inject public ReleaseInitializer(final Timber.Tree logTree) {
     this.logTree = logTree;
   }
 
-  @Override
-  public void initialize() {
+  @Override public void initialize() {
     initializeLog();
   }
 

@@ -11,14 +11,11 @@ import okhttp3.Cache;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 
-@Module
-public class NetworkModule {
+@Module public class NetworkModule {
   private static final int DISK_CACHE_SIZE = 50 * 1024 * 1024; // 50MB
   private static final String DISK_CACHE_FOLDER = "http";
 
-  @Provides
-  @Singleton
-  OkHttpClient provideOkHttpClient(Application app,
+  @Provides @Singleton OkHttpClient provideOkHttpClient(Application app,
       final @OkHttpInterceptors @NonNull List<Interceptor> interceptors,
       final @OkHttpNetworkInterceptors @NonNull List<Interceptor> networkInterceptors) {
     return createOkHttpClient(createOkHttpClientBuilder(app), interceptors, networkInterceptors);

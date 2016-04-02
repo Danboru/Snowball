@@ -7,18 +7,16 @@ import timber.log.Timber;
 public class MainInitializer extends ReleaseInitializer {
 
   protected final Application application;
-  protected final ActivityHierarchyServer activityHierarchyServer;
+  private final ActivityHierarchyServer activityHierarchyServer;
 
-  @Inject
-  public MainInitializer(final Timber.Tree logTree,
-      final Application application, final ActivityHierarchyServer activityHierarchyServer) {
+  @Inject public MainInitializer(final Timber.Tree logTree, final Application application,
+      final ActivityHierarchyServer activityHierarchyServer) {
     super(logTree);
     this.application = application;
     this.activityHierarchyServer = activityHierarchyServer;
   }
 
-  @Override
-  public void initialize() {
+  @Override public void initialize() {
     super.initialize();
     initializeActivityLifeCycle();
   }

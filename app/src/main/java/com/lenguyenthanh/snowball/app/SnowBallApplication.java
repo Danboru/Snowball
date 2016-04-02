@@ -13,8 +13,7 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 public class SnowBallApplication extends Application {
-  @Inject
-  Initializer initializer;
+  @Inject Initializer initializer;
 
   protected AppComponent appComponent;
 
@@ -26,8 +25,7 @@ public class SnowBallApplication extends Application {
     return (SnowBallApplication) context.getApplicationContext();
   }
 
-  @Override
-  public void onCreate() {
+  @Override public void onCreate() {
     super.onCreate();
     initializeDaggerComponent();
     initializer.initialize();
@@ -35,17 +33,13 @@ public class SnowBallApplication extends Application {
 
   protected void initializeDaggerComponent() {
     appComponent =
-        DaggerSnowBallApplication_AppComponent.builder()
-            .appModule(new AppModule(this))
-            .build();
+        DaggerSnowBallApplication_AppComponent.builder().appModule(new AppModule(this)).build();
     appComponent.inject(this);
   }
 
-  @Singleton
-  @Component(modules = {
+  @Singleton @Component(modules = {
       AppModule.class, SupportModule.class, NetworkModule.class, ApiModule.class, UIModule.class
-  })
-  public interface AppComponent extends AppDependencies {
+  }) public interface AppComponent extends AppDependencies {
 
     void inject(SnowBallApplication app);
 
