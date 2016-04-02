@@ -6,8 +6,5 @@ import javax.inject.Qualifier;
 
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
-@Documented
-@Qualifier
-@Retention(RUNTIME)
-public @interface OkHttpInterceptors {
+@Documented @Qualifier @Retention(RUNTIME) public @interface OkHttpInterceptors {
 }

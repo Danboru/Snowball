@@ -13,13 +13,11 @@ public class RepositoryErrorBundle implements ErrorBundle {
     this.exception = exception;
   }
 
-  @Override
-  public Exception getException() {
+  @Override public Exception getException() {
     return exception;
   }
 
-  @Override
-  public String getErrorMessage() {
+  @Override public String getErrorMessage() {
     String message = "";
     if (this.exception != null) {
       message = this.exception.getMessage();

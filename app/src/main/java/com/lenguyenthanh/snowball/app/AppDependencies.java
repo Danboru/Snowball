@@ -15,5 +15,4 @@ public interface AppDependencies extends ServiceDependencies, UIDependencies {
   PostExecutionThread postExecutionThread();
 
   Configuration configuration();
-
 }

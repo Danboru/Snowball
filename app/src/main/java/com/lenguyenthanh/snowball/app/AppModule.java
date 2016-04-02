@@ -11,41 +11,28 @@ import dagger.Module;
 import dagger.Provides;
 import javax.inject.Singleton;
 
-@Module
-@Singleton
-public class AppModule {
+@Module @Singleton public class AppModule {
   Application application;
 
   public AppModule(Application application) {
     this.application = application;
   }
 
-  @Provides
-  @NonNull
-  @Singleton
-  public Application providesApplication() {
+  @Provides @NonNull @Singleton public Application providesApplication() {
     return application;
   }
 
-  @Provides
-  @NonNull
-  @Singleton
-  public ObjectMapper provideObjectMapper() {
+  @Provides @NonNull @Singleton public ObjectMapper provideObjectMapper() {
     return new ObjectMapper();
   }
 
-  @Provides
-  @Singleton
-  @NonNull
+  @Provides @Singleton @NonNull
   public ThreadExecutor provideThreadExecutor(JobExecutor jobExecutor) {
     return jobExecutor;
   }
 
-  @Provides
-  @Singleton
-  @NonNull
+  @Provides @Singleton @NonNull
   public PostExecutionThread providePostExecutionThread(UIThread uiThread) {
     return uiThread;
   }
-
 }

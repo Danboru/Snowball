@@ -14,18 +14,15 @@ public interface Tracker {
    * Simple No-op implementation of tracking.
    */
   class SimpleTracker implements Tracker {
-    @Override
-    public void track(String eventName) {
+    @Override public void track(String eventName) {
       Timber.d(eventName);
     }
 
-    @Override
-    public void track(String eventName, String... properties) {
+    @Override public void track(String eventName, String... properties) {
       Timber.d(eventName);
     }
 
-    @Override
-    public void track(String eventName, Map<String, ?> properties) {
+    @Override public void track(String eventName, Map<String, ?> properties) {
       Timber.d(eventName);
     }
   }
