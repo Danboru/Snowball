@@ -5,7 +5,7 @@ public interface Configuration {
 
   class SimpleConfiguration implements Configuration {
     @Override public String getBaseApiUrl() {
-      return "https://gist.githubusercontent.com/lenguyenthanh/5bb3bbd3404bb118bfc1/raw/91809efb7abbc43870465cb594cdfd0bce67bb26/";
+      return "https://gist.githubusercontent.com/lenguyenthanh/c1978681327d22227689b8819c2327f4/raw/bf7bb64d194f4f55bbff5a8dca4dd81126e1c278/";
     }
   }
 }

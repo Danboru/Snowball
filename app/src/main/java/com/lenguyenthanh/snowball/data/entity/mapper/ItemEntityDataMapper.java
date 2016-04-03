@@ -22,7 +22,7 @@ public class ItemEntityDataMapper {
           .id(itemEntity.videoId)
           .name(itemEntity.name)
           .thumbnail(itemEntity.thumbnail)
-          .url(itemEntity.url)
+          .description(itemEntity.description)
           .build();
     }
     return null;

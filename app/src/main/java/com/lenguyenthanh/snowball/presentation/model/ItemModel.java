@@ -8,7 +8,7 @@ import com.google.auto.value.AutoValue;
 
   public abstract String name();
 
-  public abstract String url();
+  public abstract String description();
 
   public abstract String thumbnail();
 
@@ -21,7 +21,7 @@ import com.google.auto.value.AutoValue;
 
     public abstract Builder name(String name);
 
-    public abstract Builder url(String url);
+    public abstract Builder description(String url);
 
     public abstract Builder thumbnail(String thumbnail);
 

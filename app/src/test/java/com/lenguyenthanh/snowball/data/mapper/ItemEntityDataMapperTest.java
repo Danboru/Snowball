@@ -16,15 +16,15 @@ import static org.hamcrest.CoreMatchers.is;
 
 public class ItemEntityDataMapperTest {
 
-  int videoId = 1;
+  private final int id = 1;
 
-  String url = "url";
+  private final String description = "url";
 
-  String name = "name";
+  private final String name = "name";
 
-  String thumbnail = "thumbnail";
+  private final String thumbnail = "thumbnail";
 
-  ItemEntityDataMapper dataMapper;
+  private ItemEntityDataMapper dataMapper;
 
   @Before
   public void setUp() throws Exception {
@@ -35,9 +35,9 @@ public class ItemEntityDataMapperTest {
   public void testTransform() throws Exception {
     ItemEntity itemEntity = createItemEntity();
     Item video = dataMapper.transform(itemEntity);
-    assertThat(video.id()).isEqualTo(videoId);
+    assertThat(video.id()).isEqualTo(id);
     assertThat(video.name()).isEqualTo(name);
-    assertThat(video.url()).isEqualTo(url);
+    assertThat(video.description()).isEqualTo(description);
     assertThat(video.thumbnail()).isEqualTo(thumbnail);
   }
 
@@ -55,8 +55,8 @@ public class ItemEntityDataMapperTest {
 
   ItemEntity createItemEntity(){
     ItemEntity itemEntity = new ItemEntity();
-    itemEntity.url = url;
-    itemEntity.videoId = videoId;
+    itemEntity.description = description;
+    itemEntity.videoId = id;
     itemEntity.name = name;
     itemEntity.thumbnail = thumbnail;
     return itemEntity;

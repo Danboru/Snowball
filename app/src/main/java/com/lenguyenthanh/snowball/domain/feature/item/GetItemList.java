@@ -17,6 +17,6 @@ public class GetItemList extends UseCase {
   }
 
   @Override public Observable buildUseCaseObservable() {
-    return this.itemRepository.videos();
+    return this.itemRepository.items();
   }
 }

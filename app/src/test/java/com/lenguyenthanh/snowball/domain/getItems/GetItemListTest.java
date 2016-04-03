@@ -50,7 +50,7 @@ public class GetItemListTest {
   public void testGetUserListUseCaseObservableHappyCase() {
     getItemList.buildUseCaseObservable();
 
-    verify(mockItemRepository).videos();
+    verify(mockItemRepository).items();
     verifyNoMoreInteractions(mockItemRepository);
     verifyZeroInteractions(mockThreadExecutor);
     verifyZeroInteractions(mockPostExecutionThread);

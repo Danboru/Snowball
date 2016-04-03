@@ -14,15 +14,15 @@ import static org.hamcrest.CoreMatchers.is;
 
 public class VideoModelDataMapperTest {
 
-  int videoId = 1;
+  int id = 1;
 
-  String url = "url";
+  private final String description = "description";
 
-  String name = "name";
+  private final String name = "name";
 
-  String thumbnail = "thumbnail";
+  private final String thumbnail = "thumbnail";
 
-  ItemModelDataMapper dataMapper;
+  private ItemModelDataMapper dataMapper;
 
   @Before
   public void setUp() throws Exception {
@@ -33,9 +33,9 @@ public class VideoModelDataMapperTest {
   public void testTransform() throws Exception {
     Item item = createItem();
     ItemModel videoModel = dataMapper.transform(item);
-    assertThat(videoModel.id()).isEqualTo(videoId);
+    assertThat(videoModel.id()).isEqualTo(id);
     assertThat(videoModel.name()).isEqualTo(name);
-    assertThat(videoModel.url()).isEqualTo(url);
+    assertThat(videoModel.description()).isEqualTo(description);
     assertThat(videoModel.thumbnail()).isEqualTo(thumbnail);
   }
 
@@ -52,6 +52,6 @@ public class VideoModelDataMapperTest {
   }
 
   private Item createItem() {
-    return Item.builder().id(videoId).url(url).name(name).thumbnail(thumbnail).build();
+    return Item.builder().id(id).description(description).name(name).thumbnail(thumbnail).build();
   }
 }

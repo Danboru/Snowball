@@ -13,24 +13,28 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Fail.fail;
 
 @RunWith(IntegrationRobolectricTestRunner.class)
-public class VideoServiceTest {
+public class ItemServiceTest {
 
-  private final String response = "[\n" + "  {\n" + "    \"id\": \"1\",\n"
-      + "    \"url\": \"http://media.snowballnow.com/video/upload/v1451206914/lcgbutfkqbkhvrfdurrp.mp4\",\n"
-      + "    \"title\": \"Motobike\",\n"
-      + "    \"thumbnail\": \"https://www.evernote.com/shard/s159/sh/d2345890-5698-48bb-91e8-bcf763e"
-      + "86d2b/d1b288341ff44254/res/a7c7b1d0-8a81-4c64-b5cc-5e3dad73bf45/skitch.jpg?resizeSmall&width=832\"\n"
-      + "  },\n" + "  {\n" + "    \"id\": \"2\",\n"
-      + "    \"url\": \"http://media.snowballnow.com/video/upload/v1450752299/deff3bxsmpsrow4i40e0.mp4\",\n"
-      + "    \"title\": \"Beryl\",\n"
-      + "    \"thumbnail\": \"https://www.evernote.com/shard/s159/sh/870e4057-fc67-432f-8616-8b24e3e1"
-      + "c5c9/8c4144b2f727dc7c/res/a4dd159c-6a26-4404-aad3-724a891fe432/skitch.jpg?resizeSmall&width=832\"\n"
-      + "  },\n" + "  {\n" + "    \"id\": \"3\",\n"
-      + "    \"url\": \"http://media.snowballnow.com/video/upload/v1450787135/poareeehaxfqhcyavnnl.mp4\",\n"
-      + "    \"title\": \"Ideal\",\n"
-      + "    \"thumbnail\": \"https://www.evernote.com/shard/s159/sh/b2794124-2578-41c3-9be6-82500dca"
-      + "1bbe/e65286fe8884e73d/res/0db48c73-216b-40b3-9eb3-596271c276a7/skitch.jpg?resizeSmall&width=832\"\n"
-      + "  }\n" + "]";
+  private final String response = "[\n"
+      + "  {\n"
+      + "    \"id\": \"1\",\n"
+      + "    \"description\": \"If there's only one player who deserves that nickname, O Fenomeno, it's him. He's a phenomenon.\",\n"
+      + "    \"title\": \"Ronaldo\",\n"
+      + "    \"thumbnail\": \"https://image.freepik.com/free-photo/ronaldo---football-player-legends_26-638.jpg\"\n"
+      + "  },\n"
+      + "  {\n"
+      + "    \"id\": \"2\",\n"
+      + "    \"description\": \"Mark my words Gerrard is the greatest player to have played for #lfc sad sad day for everyone connected with the club.\",\n"
+      + "    \"title\": \"Gerrard\",\n"
+      + "    \"thumbnail\": \"https://scontent-hkg3-1.xx.fbcdn.net/hphotos-xap1/v/t1.0-9/10671345_10202881746756109_7243997333740624908_n.jpg?oh=555f96c811e2ce69f5dee2ccfb8191fb&oe=57BD4908\"\n"
+      + "  },\n"
+      + "  {\n"
+      + "    \"id\": \"3\",\n"
+      + "    \"description\": \"I don’t think anyone ever looks forward to playing against Luis Suarez, he is a fantastic talent and a very dangerous player. He is a fantastic team mate, probably the best player I have played with.\",\n"
+      + "    \"title\": \"Luis Suarez\",\n"
+      + "    \"thumbnail\": \"http://i.dailymail.co.uk/i/pix/2014/06/27/article-2671421-0783B5E700000514-407_634x488.jpg\"\n"
+      + "  }\n"
+      + "]";
 
   @Rule
   public MockServerRule mockServerRule = (MockServerRule) new MockServerRule().set(
@@ -39,7 +43,7 @@ public class VideoServiceTest {
   ItemService restApi;
 
   @Test
-  public void testVideos() throws Exception {
+  public void testItems() throws Exception {
     mockServerRule.getMockWebServer().enqueue(new MockResponse().setBody(response));
 
     // Get items from the API

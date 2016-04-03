@@ -4,5 +4,5 @@ import java.util.List;
 import rx.Observable;
 
 public interface ItemRepository {
-  Observable<List<Item>> videos();
+  Observable<List<Item>> items();
 }

@@ -8,8 +8,8 @@ import static org.junit.Assert.assertThat;
 
 public class ItemTest {
   private static String FAKE_NAME = "item name";
-  private static String FAKE_URL = "video_url";
-  private static String FAKE_THUMBNAIL = "video_thumbnail";
+  private static String FAKE_DESCRIPTION = "item_description";
+  private static String FAKE_THUMBNAIL = "item_thumbnail";
   private static int FAKE_ID = 100;
 
   private Item item;
@@ -20,11 +20,11 @@ public class ItemTest {
         .id(FAKE_ID)
         .name(FAKE_NAME)
         .thumbnail(FAKE_THUMBNAIL)
-        .url(FAKE_URL)
+        .description(FAKE_DESCRIPTION)
         .build();
     assertThat(item.id(), is(FAKE_ID));
     assertThat(item.name(), is(FAKE_NAME));
     assertThat(item.thumbnail(), is(FAKE_THUMBNAIL));
-    assertThat(item.url(), is(FAKE_URL));
+    assertThat(item.description(), is(FAKE_DESCRIPTION));
   }
 }

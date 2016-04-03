@@ -22,7 +22,7 @@ import javax.inject.Inject;
         .id(item.id())
         .name(item.name())
         .thumbnail(item.thumbnail())
-        .url(item.url())
+        .description(item.description())
         .build();
   }
 

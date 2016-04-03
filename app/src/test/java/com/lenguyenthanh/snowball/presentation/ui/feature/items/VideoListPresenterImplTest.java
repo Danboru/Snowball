@@ -33,7 +33,7 @@ public class VideoListPresenterImplTest {
   }
 
   @Test public void testLoadItemList() throws Exception {
-    presenter.loadVideoList();
+    presenter.loadItemList();
   }
 
   @Test public void testDoRefresh() throws Exception {

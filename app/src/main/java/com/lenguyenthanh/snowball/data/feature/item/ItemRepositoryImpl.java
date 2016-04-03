@@ -17,7 +17,7 @@ public class ItemRepositoryImpl implements ItemRepository {
     this.itemEntityDataMapper = itemEntityDataMapper;
   }
 
-  @Override public Observable<List<Item>> videos() {
+  @Override public Observable<List<Item>> items() {
     return itemService.items().map(itemEntityDataMapper::transform);
   }
 }

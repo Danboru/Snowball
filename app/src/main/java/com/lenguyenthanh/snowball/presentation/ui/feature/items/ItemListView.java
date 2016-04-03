@@ -14,5 +14,5 @@ interface ItemListView extends NimbleView {
 
   void hideRefresh();
 
-  void renderVideoList(List<ItemModel> userModelCollection);
+  void renderItemList(List<ItemModel> userModelCollection);
 }
