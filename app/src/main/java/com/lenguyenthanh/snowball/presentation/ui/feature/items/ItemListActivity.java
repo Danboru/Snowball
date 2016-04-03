@@ -29,33 +29,33 @@ public class ItemListActivity extends BaseActivity<ItemListView> implements Item
   @Bind(R.id.toolbar) Toolbar toolbar;
 
   // View widget
-  @Bind(R.id.listVideo) RecyclerView listVideo;
+  @Bind(R.id.listItem) RecyclerView listItem;
   @Bind(R.id.swipeLayout) SwipeRefreshLayout swipeLayout;
   @Bind(R.id.contentLayout) BetterViewAnimator contentLayout;
 
   @Inject ItemsAdapter itemsAdapter;
 
   @OnClick(R.id.btRetry) void onBtRetryClicked() {
-    presenter().loadVideoList();
+    presenter().loadItemList();
     tracker.track("Retry");
   }
 
   @Override protected void onCreate(final Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     initializeUI();
-    presenter().loadVideoList();
+    presenter().loadItemList();
     tracker.track("onCreate");
   }
 
   private void initializeUI() {
     swipeLayout.setOnRefreshListener(() -> presenter().doRefresh());
-    ItemClickSupport.addTo(listVideo)
-        .setOnItemClickListener((recyclerView, position, v) -> presenter.playVideo());
+    ItemClickSupport.addTo(listItem)
+        .setOnItemClickListener((recyclerView, position, v) -> presenter.gotoItemDetail());
     toolbar.setTitle(getString(R.string.app_name));
-    listVideo.setLayoutManager(new LinearLayoutManager(this, VERTICAL, false));
-    listVideo.addItemDecoration(new VerticalSpaceItemDecoration(
+    listItem.setLayoutManager(new LinearLayoutManager(this, VERTICAL, false));
+    listItem.addItemDecoration(new VerticalSpaceItemDecoration(
         (int) getResources().getDimension(R.dimen.list_item_vertical_space_between_items)));
-    listVideo.setAdapter(itemsAdapter);
+    listItem.setAdapter(itemsAdapter);
   }
 
   @Override protected void buildComponent(SnowBallApplication.AppComponent appComponent) {
@@ -96,7 +96,7 @@ public class ItemListActivity extends BaseActivity<ItemListView> implements Item
     }
   }
 
-  @Override public void renderVideoList(final List<ItemModel> userModelCollection) {
+  @Override public void renderItemList(final List<ItemModel> userModelCollection) {
     showContent();
     itemsAdapter.setData(userModelCollection);
   }

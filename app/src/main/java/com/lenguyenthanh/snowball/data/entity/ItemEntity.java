@@ -6,7 +6,7 @@ public class ItemEntity {
 
   @JsonProperty("id") public int videoId;
 
-  @JsonProperty("url") public String url;
+  @JsonProperty("description") public String description;
 
   @JsonProperty("title") public String name;
 

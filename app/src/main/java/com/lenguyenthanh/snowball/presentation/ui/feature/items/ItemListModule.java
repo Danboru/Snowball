@@ -33,13 +33,13 @@ class ItemListModule extends ActivityModule {
   }
 
   @Provides
-  @ActivityScope ItemRepository provideVideoRepository(ItemRepositoryImpl repository) {
+  @ActivityScope ItemRepository provideItemRepository(ItemRepositoryImpl repository) {
     return repository;
   }
 
   @Provides
   @ActivityScope
-  UseCase provideGetVideoList(GetItemList getItemList) {
+  UseCase provideGetItemList(GetItemList getItemList) {
     return getItemList;
   }
 
