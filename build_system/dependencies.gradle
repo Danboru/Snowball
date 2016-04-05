@@ -47,7 +47,8 @@ ext.versions = [
         mockito                : '1.10.19',
         supportTestRunner      : '0.4.1',
         robolectric            : '3.0',
-        daggerMock             : '0.5'
+        daggerMock             : '0.5',
+        commonIO               : '2.4'
 ]
 
 ext.libraries = [
@@ -102,4 +103,5 @@ ext.libraries = [
         espressoContrib         : "com.android.support.test.espresso:espresso-contrib:$versions.espresso",
         robolectric             : "org.robolectric:robolectric:$versions.robolectric",
         daggerMock              : "com.github.fabioCollini:DaggerMock:$versions.daggerMock",
+        commonIO                : "commons-io:commons-io:$versions.commonIO"
 ]
