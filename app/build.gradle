@@ -62,6 +62,7 @@ android {
 
     // Integration tests live in src/integrationTest.
     test.java.srcDir 'src/integrationTests/java'
+    test.resources.srcDirs 'src/integrationTests/resources'
 
     // Unit tests for debug build type specific code live in src/debugUnitTest.
     testDebug.java.srcDir 'src/debugUnitTests/java'
@@ -157,7 +158,7 @@ dependencies {
   testCompile libraries.okHttpMockWebServer
   testCompile libraries.mockitoCore
   testCompile libraries.daggerMock
-
+  testCompile libraries.commonIO
 
   androidTestCompile libraries.supportTestRunner
   androidTestCompile libraries.supportTestRules
