@@ -31,10 +31,13 @@ public class SnowBallApplication extends Application {
     initializer.initialize();
   }
 
-  protected void initializeDaggerComponent() {
-    appComponent =
-        DaggerSnowBallApplication_AppComponent.builder().appModule(new AppModule(this)).build();
+  private void initializeDaggerComponent() {
+    appComponent = buildComponent();
     appComponent.inject(this);
+  }
+
+  protected AppComponent buildComponent() {
+    return DaggerSnowBallApplication_AppComponent.builder().appModule(new AppModule(this)).build();
   }
 
   @Singleton @Component(modules = {

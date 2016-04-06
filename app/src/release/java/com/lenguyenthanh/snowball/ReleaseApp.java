@@ -11,19 +11,13 @@ import javax.inject.Singleton;
 
 public class ReleaseApp extends SnowBallApplication {
 
-  @Singleton
-  @Component(modules = {
+  @Singleton @Component(modules = {
       AppModule.class, NetworkModule.class, ApiModule.class, ReleaseModule.class, UIModule.class
-  })
-  public interface AppComponent extends SnowBallApplication.AppComponent{
-      void inject(ReleaseInitializer initializer);
+  }) public interface AppComponent extends SnowBallApplication.AppComponent {
+    void inject(ReleaseInitializer initializer);
   }
 
-  @Override
-  protected void initializeDaggerComponent() {
-    appComponent = DaggerReleaseApp_AppComponent.builder()
-        .appModule(new AppModule(this))
-        .build();
-    appComponent.inject(this);
+  @Override protected SnowBallApplication.AppComponent buildComponent() {
+    return DaggerReleaseApp_AppComponent.builder().appModule(new AppModule(this)).build();
   }
 }

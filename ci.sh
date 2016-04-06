@@ -1,1 +1,1 @@
-./gradlew check -PdisablePreDex --continue --stacktrace
+./gradlew clean build connectedAndroidTest -PdisablePreDex
