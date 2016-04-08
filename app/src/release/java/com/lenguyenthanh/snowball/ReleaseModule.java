@@ -1,7 +1,6 @@
 package com.lenguyenthanh.snowball;
 
 import android.support.annotation.NonNull;
-import android.util.Log;
 import com.lenguyenthanh.snowball.app.config.Configuration;
 import com.lenguyenthanh.snowball.app.config.Initializer;
 import com.lenguyenthanh.snowball.app.config.ReleaseInitializer;
@@ -29,7 +28,7 @@ public class ReleaseModule{
 
       @Override
       protected void log(int priority, String tag, String message, Throwable t) {
-        Log.wtf(tag, "Release");
+        // don't do any thing
       }
     };
   }
