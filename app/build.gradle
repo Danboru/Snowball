@@ -122,8 +122,6 @@ dependencies {
   // Dagger 2
   compile libraries.dagger
   apt libraries.daggerCompiler
-  compile libraries.javaxInject
-  compile libraries.javaxAnnotationApi
 
   compile libraries.autoValue
 
@@ -192,5 +190,6 @@ configurations.all {
   resolutionStrategy {
     // Force our version of support-annotations, we have a conflict between app and androidTest dependency resolution.
     force libraries.supportAnnotations
+    force libraries.dagger
   }
 }
