@@ -33,7 +33,7 @@ ext.versions = [
         timber                 : '4.1.1',
         espresso               : '2.2.1',
         stetho                 : '1.3.0',
-        leakCanary             : '1.3.1',
+        leakCanary             : '1.4-beta2',
         paperwork              : '1.2.7',
         icepick                : '3.1.0',
         nimble                 : '0.5.1',
