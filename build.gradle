@@ -7,7 +7,7 @@ buildscript {
     jcenter()
   }
   dependencies {
-    classpath 'com.android.tools.build:gradle:2.0.0'
+    classpath 'com.android.tools.build:gradle:2.1.0'
 
     // APT compile-time annotation processing
     classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
