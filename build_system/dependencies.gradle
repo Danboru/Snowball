@@ -18,13 +18,13 @@ ext.versions = [
         minSdk                 : 16,
         targetSdk              : 23,
         compileSdk             : 23,
-        buildTools             : '23.0.2',
+        buildTools             : '23.0.3',
 
         dagger                 : '2.4',
 
         rxJava                 : '1.1.5',
         rxAndroid              : '1.2.0',
-        supportLibs            : '23.2.0',
+        supportLibs            : '23.3.0',
         okHttp                 : '3.2.0',
         retrofit               : '2.0.0',
         jackson                : '2.6.2',
