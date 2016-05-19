@@ -76,7 +76,7 @@ class ItemListPresenterImpl extends SaveStatePresenter<ItemListView> implements 
 
   @VisibleForTesting
   public void showError(Throwable e, boolean isRefresh){
-    ItemListPresenterImpl.this.showErrorMessage(new DefaultErrorBundle(e));
+    showErrorMessage(new DefaultErrorBundle(e));
     if(isRefresh){
       getView().hideRefresh();
     }else{
