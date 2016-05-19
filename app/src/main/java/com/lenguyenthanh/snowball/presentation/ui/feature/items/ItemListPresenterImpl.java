@@ -1,5 +1,7 @@
 package com.lenguyenthanh.snowball.presentation.ui.feature.items;
 
+import android.support.annotation.VisibleForTesting;
+
 import com.lenguyenthanh.snowball.domain.DefaultSubscriber;
 import com.lenguyenthanh.snowball.domain.UseCase;
 import com.lenguyenthanh.snowball.domain.exception.DefaultErrorBundle;
@@ -22,9 +24,11 @@ class ItemListPresenterImpl extends SaveStatePresenter<ItemListView> implements 
   private final ErrorMessageFactory errorMessageFactory;
   private final NavigationCommand navigationCommand;
 
-  private List<ItemModel> itemModels;
+  @VisibleForTesting
+  public List<ItemModel> itemModels;
 
-  @Inject ItemListPresenterImpl(final UseCase getItemList,
+  @Inject
+  ItemListPresenterImpl(final UseCase getItemList,
       final ItemModelDataMapper itemModelMapper, final ErrorMessageFactory errorMessageFactory,
       final NavigationCommand navigationCommand) {
     this.getItemList = getItemList;
@@ -58,23 +62,32 @@ class ItemListPresenterImpl extends SaveStatePresenter<ItemListView> implements 
     getItemList.execute(subscriber);
   }
 
-  private void showErrorMessage(ErrorBundle errorBundle) {
+  @VisibleForTesting
+  public void showErrorMessage(ErrorBundle errorBundle) {
     String errorMessage = errorMessageFactory.create(errorBundle.getException());
     getView().showError(errorMessage);
   }
 
-  private void showListItemInView(List<Item> users) {
-    itemModels = this.itemModelMapper.transform(users);
+  @VisibleForTesting
+  public void showListItemInView(List<Item> items) {
+    itemModels = this.itemModelMapper.transform(items);
     getView().renderItemList(itemModels);
+  }
+
+  @VisibleForTesting
+  public void showError(Throwable e, boolean isRefresh){
+    showErrorMessage(new DefaultErrorBundle(e));
+    if(isRefresh){
+      getView().hideRefresh();
+    }else{
+      getView().showRetry();
+    }
   }
 
   private final class LoadItemListSubscriber extends DefaultSubscriber<List<Item>> {
 
     @Override public void onError(Throwable e) {
-      if (e instanceof Exception) {
-        ItemListPresenterImpl.this.showErrorMessage(new DefaultErrorBundle((Exception) e));
-      }
-      getView().showRetry();
+      ItemListPresenterImpl.this.showError(e, false);
     }
 
     @Override public void onNext(List<Item> items) {
@@ -89,10 +102,7 @@ class ItemListPresenterImpl extends SaveStatePresenter<ItemListView> implements 
     }
 
     @Override public void onError(Throwable e) {
-      if (e instanceof Exception) {
-        ItemListPresenterImpl.this.showErrorMessage(new DefaultErrorBundle((Exception) e));
-      }
-      getView().hideRefresh();
+      ItemListPresenterImpl.this.showError(e, true);
     }
 
     @Override public void onNext(List<Item> items) {
