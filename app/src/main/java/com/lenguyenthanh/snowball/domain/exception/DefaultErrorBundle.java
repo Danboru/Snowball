@@ -22,13 +22,13 @@ public class DefaultErrorBundle implements ErrorBundle {
 
   private static final String DEFAULT_ERROR_MSG = "Unknown error";
 
-  private final Exception exception;
+  private final Throwable exception;
 
-  public DefaultErrorBundle(Exception exception) {
+  public DefaultErrorBundle(Throwable exception) {
     this.exception = exception;
   }
 
-  @Override public Exception getException() {
+  @Override public Throwable getException() {
     return exception;
   }
 

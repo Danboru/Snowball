@@ -16,7 +16,7 @@ import javax.inject.Inject;
     this.application = application;
   }
 
-  public String create(Exception exception) {
+  public String create(Throwable exception) {
     String message = application.getString(R.string.app_name);
 
     if (exception instanceof NetworkConnectionException
